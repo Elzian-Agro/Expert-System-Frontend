@@ -51,6 +51,7 @@ function Cover() {
   // the backend connection
   const register = () => {
     // form validation
+    let customAlert;
     if (
       !regUser.userFirstName.trim() ||
       !regUser.userLastName.trim() ||
@@ -64,25 +65,25 @@ function Cover() {
       !regUser.userEmail.trim() ||
       !regUser.userPassword.trim()
     ) {
-      alert("Fill all the required fields");
+      customAlert("Fill all the required fields");
     } else if (
       !regUser.userEmail.trim() ||
       !regUser.userEmail.includes("@") ||
       !regUser.userEmail.endsWith(".com")
     ) {
-      alert("Email is required with '@' and '.com' ");
+      customAlert("Email is required with '@' and '.com' ");
     } else if (regUser.userPassword.trim().length < 7) {
-      alert("Password is required with minimum of 6 characters");
+      customAlert("Password is required with minimum of 6 characters");
     } else {
       axios
         .post("http://localhost:3002/user/add/expert", regUser)
         .then(() => {
-          alert("Successfuly registered ");
+          customAlert("Successfuly registered ");
           // user navigation after a successful registration
           history("/authentication/sign-in");
         })
         .catch((res) => {
-          alert(res.body);
+          customAlert(res.body);
         });
     }
   };
