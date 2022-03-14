@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v1
       
     - name: Install and Build
-      run: npm install && npm run build
+      run: npm install --force && npm run build
       
     - name: Deploy
       uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
