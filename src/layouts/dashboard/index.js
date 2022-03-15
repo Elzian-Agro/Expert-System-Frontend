@@ -15,7 +15,7 @@ function Dashboard() {
   const [meetingData, setMeetingData] = useState([]);
 
   const getExpertData = async () => {
-    const res = await axios.get("http://localhost:3002/user/getExperts", {
+    const res = await axios.get("https://elzian-agro-user-auth.herokuapp.com/user/getExperts", {
       headers: {
         "x-auth-token": cookies.token,
       },
@@ -25,7 +25,7 @@ function Dashboard() {
   };
 
   const getMeetingsData = async () => {
-    const res = await axios.get("http://localhost:5000/schedule/booked", {
+    const res = await axios.get("https://elzian-agro-expert-system.herokuapp.com/schedule/booked", {
       headers: {
         "x-auth-token": cookies.token,
       },
@@ -104,7 +104,7 @@ function Dashboard() {
               <Grid item sm={12} md={6} lg={4} key={meeting.MeetingTitle + meeting.Time}>
                 <RecipeReviewCard
                   key={meeting.MeetingTitle + meeting.Time}
-                  // expImg="meet1.jpg"
+                  profileImg="meet1.jpg"
                   title={meeting.MeetingTitle}
                   details={meeting.Description}
                   name={meeting.ExpertName}
