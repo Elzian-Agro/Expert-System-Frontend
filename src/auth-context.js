@@ -16,7 +16,11 @@ const AuthProvider = (props) => {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   // eslint-disable-next-line no-unused-vars
   const [usercookies, setUserCookie, removeUserCookie] = useCookies(["user"]);
-
+  React.useEffect(() => {
+    if (cookies.token) {
+      setLoggedIn(true);
+    }
+  }, []);
   const login = () => {
     axios.post("http://127.0.0.1:3002/auth/login", loginUser).then((res) => {
       setloginUser({
