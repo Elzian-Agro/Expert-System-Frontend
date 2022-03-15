@@ -20,7 +20,7 @@ function Dashboard() {
         "x-auth-token": cookies.token,
       },
     });
-    console.log(res.data);
+    // console.log(res.data);
     setExpertsData(res.data);
   };
 

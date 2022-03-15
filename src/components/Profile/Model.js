@@ -1,5 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import * as React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// @mui material UI components
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -44,6 +48,7 @@ export function TransitionsModal(props) {
 
   return (
     <div>
+      <ToastContainer />
       <Button onClick={handleOpen}>
         <Icon>edit</Icon>
         edit Profile
@@ -210,9 +215,9 @@ export function UploadButtons(props) {
 
     axios.put("http://localhost:3002/user/updateAuthUser", data, config).then((res) => {
       if (res.status === 200) {
-        console.log(res);
+        // console.log(res);
       } else {
-        console.log("error");
+        toast.error("error");
       }
     });
   }
@@ -231,9 +236,9 @@ export function UploadButtons(props) {
 
       axios.put("http://localhost:3002/user/uploadAuthUser", data, config).then((res) => {
         if (res.status === 200) {
-          console.log("ok");
+          toast.success("success");
         } else {
-          console.log("error");
+          toast.error("error");
         }
       });
     }

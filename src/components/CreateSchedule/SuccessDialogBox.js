@@ -1,4 +1,8 @@
 import * as React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// @mui material UI components
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -17,6 +21,7 @@ export default function AlertDialog(props) {
   return (
     <div>
       <Dialog open={open} onClose={handleDialogClose}>
+        <ToastContainer />
         <DialogContent>
           <center>
             <Avatar style={avatarStyle}>
@@ -60,8 +65,8 @@ export default function AlertDialog(props) {
 
 AlertDialog.defaultProps = {
   open: "",
-  handleDialogClose: () => console.log("hello"),
-  cancelHandler: () => console.log("cancel handler"),
+  handleDialogClose: () => toast("hello"),
+  cancelHandler: () => toast("cancel handler"),
 };
 
 AlertDialog.propTypes = {
