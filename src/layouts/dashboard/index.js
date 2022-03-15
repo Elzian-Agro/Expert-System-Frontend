@@ -46,10 +46,12 @@ function Dashboard() {
             <Grid item>
               <center>
                 <Zoom in={checked} style={{ transitionDelay: "400ms" }}>
-                  <h1>Welcome</h1>
+                  <Typography variant="h2">Welcome</Typography>
                 </Zoom>
                 <Zoom in={checked} style={{ transitionDelay: "550ms" }}>
-                  <Typography align="center">Elzian Agro Expert System</Typography>
+                  <Typography variant="h4" align="center">
+                    Elzian Agro Expert System
+                  </Typography>
                 </Zoom>
               </center>
             </Grid>
@@ -59,7 +61,7 @@ function Dashboard() {
           <Divider className="dividerColor" variant="fullWidth" sx={{ backgroundColor: "Black" }} />
         </Grid>
         <Grid item>
-          <Typography align="center" sx={{ fontWeight: 700 }}>
+          <Typography variant="h5" align="center" sx={{ fontWeight: 700 }}>
             Experts
           </Typography>
         </Grid>
@@ -92,7 +94,7 @@ function Dashboard() {
         </Grid>
 
         <Grid item>
-          <Typography align="center" sx={{ fontWeight: 700 }}>
+          <Typography variant="h5" align="center" sx={{ fontWeight: 700 }}>
             Meeting Links
           </Typography>
         </Grid>

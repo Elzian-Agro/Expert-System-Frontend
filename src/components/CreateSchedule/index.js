@@ -8,6 +8,7 @@ import EventNoteIcon from "@mui/icons-material/EventNote";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import { useCookies } from "react-cookie";
+import Typography from "@mui/material/Typography";
 import SuccessDialogBox from "./SuccessDialogBox";
 
 const CraeteSchedule = ({ light }) => {
@@ -81,9 +82,9 @@ const CraeteSchedule = ({ light }) => {
           <Avatar style={avatarStyle}>
             <EventNoteIcon />
           </Avatar>
-          <h2 style={headerStyle} light={light}>
+          <Typography variant="h3" style={headerStyle} light={light}>
             Create Schedule
-          </h2>
+          </Typography>
         </Grid>
         <form onSubmit={scheduleFormHandler}>
           <Grid container direction="column" spacing={2} sx={{ marginTop: 4 }}>
