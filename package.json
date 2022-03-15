@@ -1,7 +1,7 @@
 {
   "homepage": "https://expert.elzian.com/",
-  "name": "material-dashboard-2-react",
-  "version": "2.0.0",
+  "name": "Elzian Agro Expert System",
+  "version": "1.0.0",
   "private": true,
   "author": "Elzian Agro",
   "description": "Expert System development for the Elzian Agro",
@@ -51,7 +51,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "set \"CI=false\" && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
