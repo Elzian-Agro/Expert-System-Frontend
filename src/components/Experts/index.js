@@ -11,10 +11,15 @@ const ExpertProfile = () => {
   const [cookies] = useCookies(["token"]);
   const [data, setData] = useState([]);
 
+  axios.defaults.headers = {
+    "Content-Type": "application/json",
+    "x-auth-token": cookies.token,
+  };
+
   // Retrieving data from Backend
   useEffect(() => {
     axios
-      .get("http://localhost:3002/user/getExperts", { headers: { "x-auth-token": cookies.token } })
+      .get("https://elzian-agro-user-auth.herokuapp.com/user/getExperts")
       .then((response) => setData(response.data));
   }, []);
 
