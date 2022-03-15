@@ -24,7 +24,7 @@ function Profile({ children }) {
   const [usercookie] = useCookies(["user"]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(async () => {
-    console.log(usercookie);
+    // console.log(usercookie);
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
       return window.innerWidth < breakpoints.values.sm
