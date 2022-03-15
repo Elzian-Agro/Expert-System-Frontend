@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // react-router-dom components
 import { Link, useNavigate } from "react-router-dom";
 
@@ -21,17 +22,23 @@ import bgImage from "assets/images/photo-agri.avif";
 
 function Cover() {
   // declare new state variables
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [secondFocus, setSecondFocus] = React.useState(false);
-  const [addressFocus, setAddressFocus] = React.useState(false);
-  const [ageFocus, setAgeFocus] = React.useState(false);
-  const [genderFocus, setGenderFocus] = React.useState(false);
-  const [numberFocus, setNumberFocus] = React.useState(false);
-  const [qualificationFocus, setQualiFocus] = React.useState(false);
-  const [instFocus, setInstFocus] = React.useState(false);
-  const [bioFocus, setBioFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
-  const [emailFocus, setEmailFocus] = React.useState(false);
+  const [firstFocus, setFirstFocus] = useState(false);
+  const [secondFocus, setSecondFocus] = useState(false);
+  const [addressFocus, setAddressFocus] = useState(false);
+  const [ageFocus, setAgeFocus] = useState(false);
+  const [genderFocus, setGenderFocus] = useState(false);
+  const [numberFocus, setNumberFocus] = useState(false);
+  const [qualificationFocus, setQualiFocus] = useState(false);
+  const [instFocus, setInstFocus] = useState(false);
+  const [bioFocus, setBioFocus] = useState(false);
+  const [lastFocus, setLastFocus] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+  // error state
+  const [inputErr, setInputErr] = useState({
+    email: false,
+    password: false,
+  });
+
   // initialize the variales to empty strings
   const [regUser, setRegUser] = useState({
     userFirstName: "",
@@ -50,8 +57,6 @@ function Cover() {
   const history = useNavigate();
   // the backend connection
   const register = () => {
-    // form validation
-    let customAlert;
     if (
       !regUser.userFirstName.trim() ||
       !regUser.userLastName.trim() ||
@@ -65,25 +70,31 @@ function Cover() {
       !regUser.userEmail.trim() ||
       !regUser.userPassword.trim()
     ) {
-      customAlert("Fill all the required fields");
+      toast.error("Fill all the required fields");
     } else if (
       !regUser.userEmail.trim() ||
       !regUser.userEmail.includes("@") ||
       !regUser.userEmail.endsWith(".com")
     ) {
-      customAlert("Email is required with '@' and '.com' ");
+      setInputErr({
+        ...inputErr,
+        email: true,
+      });
     } else if (regUser.userPassword.trim().length < 7) {
-      customAlert("Password is required with minimum of 6 characters");
+      setInputErr({
+        ...inputErr,
+        password: true,
+      });
     } else {
       axios
         .post("http://localhost:3002/user/add/expert", regUser)
         .then(() => {
-          customAlert("Successfuly registered ");
+          toast.success("Successfuly Registered");
           // user navigation after a successful registration
           history("/authentication/sign-in");
         })
         .catch((res) => {
-          customAlert(res.body);
+          toast.error(res.body);
         });
     }
   };
@@ -118,6 +129,7 @@ function Cover() {
 
   return (
     <CoverLayout image={bgImage}>
+      <ToastContainer />
       <Card>
         <MDBox
           variant="gradient"
@@ -138,19 +150,19 @@ function Cover() {
           </MDTypography>
         </MDBox>
         <MDBox pt={4} pb={4} px={4}>
-          <MDBox component="form" role="form">
+          <MDBox component="form" role="form" noValidate autoComplete="off">
             <MDBox mb={2} className={`no-border${firstFocus ? " input-group-focus" : ""}`}>
               <MDInput
                 type="text"
                 label="First Name"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setFirstFocus(true)}
                 onBlur={() => setFirstFocus(false)}
                 name="userFirstName"
                 value={regUser.userFirstName}
                 onChange={handleChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -159,13 +171,13 @@ function Cover() {
                 type="text"
                 label="Last Name"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setSecondFocus(true)}
                 onBlur={() => setSecondFocus(false)}
                 name="userLastName"
                 value={regUser.userLastName}
                 onChange={handleChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -174,13 +186,13 @@ function Cover() {
                 type="text"
                 label="Address"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setAddressFocus(true)}
                 onBlur={() => setAddressFocus(false)}
                 name="userAddress"
                 value={regUser.userAddress}
                 onChange={handleChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -189,13 +201,13 @@ function Cover() {
                 type="text"
                 label="Age"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setAgeFocus(true)}
                 onBlur={() => setAgeFocus(false)}
                 name="userAge"
                 value={regUser.userAge}
                 onChange={onAgeChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -204,13 +216,13 @@ function Cover() {
                 type="text"
                 label="Gender"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setGenderFocus(true)}
                 onBlur={() => setGenderFocus(false)}
                 name="userGender"
                 value={regUser.userGender}
                 onChange={handleChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -219,13 +231,13 @@ function Cover() {
                 label="Phone Number"
                 type="text"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setNumberFocus(true)}
                 onBlur={() => setNumberFocus(false)}
                 name="userPhone"
                 value={regUser.userPhone}
                 onChange={onPhoneChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -234,13 +246,14 @@ function Cover() {
                 type="text"
                 label="Qulifications"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setQualiFocus(true)}
                 onBlur={() => setQualiFocus(false)}
                 name="userQulifications"
                 value={regUser.userQulifications}
                 onChange={handleChange}
                 fullWidth
-                success
+                error={false}
                 required
               />
             </MDBox>
@@ -249,13 +262,13 @@ function Cover() {
                 type="text"
                 label="Institute Work"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setInstFocus(true)}
                 onBlur={() => setInstFocus(false)}
                 name="userInstituteWork"
                 value={regUser.userInstituteWork}
                 onChange={handleChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -264,13 +277,13 @@ function Cover() {
                 type="text"
                 label="Bio"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setBioFocus(true)}
                 onBlur={() => setBioFocus(false)}
                 name="userBio"
                 value={regUser.userBio}
                 onChange={handleChange}
                 fullWidth
-                success
                 required
               />
             </MDBox>
@@ -279,13 +292,15 @@ function Cover() {
                 type="userEmail"
                 label="Email"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setEmailFocus(true)}
                 onBlur={() => setEmailFocus(false)}
                 name="userEmail"
                 value={regUser.userEmail}
                 onChange={handleChange}
                 fullWidth
-                success
+                error={inputErr.email}
+                helperText={inputErr.email ? "Email is required with '@' and '.com'" : ""}
                 required
               />
             </MDBox>
@@ -294,13 +309,17 @@ function Cover() {
                 type="password"
                 label="Password"
                 variant="standard"
+                id="standard-error-helper-text"
                 onFocus={() => setLastFocus(true)}
                 onBlur={() => setLastFocus(false)}
                 name="userPassword"
                 value={regUser.userPassword}
                 onChange={handleChange}
                 fullWidth
-                success
+                error={inputErr.password}
+                helperText={
+                  inputErr.password ? "Password is required with minimum of 6 characters" : ""
+                }
                 required
               />
             </MDBox>
