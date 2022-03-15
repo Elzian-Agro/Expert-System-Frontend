@@ -1,5 +1,9 @@
 import React from "react";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// material UI components
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -16,10 +20,11 @@ function ContactUs() {
       .sendForm("service_6rm6yln", "template_ancrhve", e.target, "user_4SHlIofMmiUhcdwAj8uJh")
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
+          toast.success(result.text);
         },
         (error) => {
-          console.log(error.text);
+          toast.error(error.text);
         }
       );
     e.target.reset();
@@ -28,6 +33,7 @@ function ContactUs() {
   return (
     <div>
       <Grid container spacing={3}>
+        <ToastContainer />
         {/* contact form  */}
         <Grid item xs={12} md={7}>
           <Card style={{ maxWidth: 600, padding: "20px 5px", margin: "0 auto", marginTop: 50 }}>

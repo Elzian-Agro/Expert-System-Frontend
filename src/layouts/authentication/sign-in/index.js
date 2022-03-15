@@ -1,12 +1,13 @@
-/* eslint-disable */
 import React, { useState } from "react";
 import { loadCSS } from "fg-loadcss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // react-router-dom components
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { useCookies } from "react-cookie";
-import axios from "axios";
+// import { useCookies } from "react-cookie";
+// import axios from "axios";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -33,10 +34,10 @@ import { useAuth } from "../../../auth-context";
 
 function Basic() {
   // declare new state variables
-  const [emailFocus, setEmailFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [lastFocus, setLastFocus] = useState(false);
   // initialize the variales to empty strings
-   // connection to backend
+  // connection to backend
   const { login, setloginUser, loginUser } = useAuth();
 
   React.useEffect(() => {
@@ -59,10 +60,9 @@ function Basic() {
     });
   };
 
-
-
   return (
     <BasicLayout image={bgImage}>
+      <ToastContainer />
       <Card>
         <MDBox
           variant="gradient"
@@ -156,10 +156,10 @@ function Basic() {
                 variant="gradient"
                 color="success"
                 fullWidth
-                onClick={()=>{
-                  if( !loginUser.email.trim() || !loginUser.password.trim()){
-                    alert("Fill the required fieldsd");
-                  }else{
+                onClick={() => {
+                  if (!loginUser.email.trim() || !loginUser.password.trim()) {
+                    toast.error("Fill the required fields");
+                  } else {
                     login();
                   }
                 }}
@@ -189,32 +189,27 @@ function Basic() {
             </MDBox>
             <MDBox mt={1} mb={1} textAlign="center">
               <MDTypography
-                  component={Link}
-                  to="/authentication/sign-up"
-                  variant="button"
-                  color="success"
-                  fontWeight="medium"
-                  textGradient
-                >
-                  Expert
+                component={Link}
+                to="/authentication/sign-up"
+                variant="button"
+                color="success"
+                fontWeight="medium"
+                textGradient
+              >
+                Expert
+              </MDTypography>
+              <MDTypography variant="button" color="success" fontWeight="medium" textGradient>
+                |
               </MDTypography>
               <MDTypography
-                  variant="button"
-                  color="success"
-                  fontWeight="medium"
-                  textGradient
-                >
-                  |
-              </MDTypography>
-              <MDTypography
-                  component={Link}
-                  to="/authentication/farmer-sign-up"
-                  variant="button"
-                  color="success"
-                  fontWeight="medium"
-                  textGradient
-                >
-                    Farmer
+                component={Link}
+                to="/authentication/farmer-sign-up"
+                variant="button"
+                color="success"
+                fontWeight="medium"
+                textGradient
+              >
+                Farmer
               </MDTypography>
             </MDBox>
           </MDBox>
