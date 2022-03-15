@@ -18,7 +18,7 @@ const AuthProvider = (props) => {
   const [usercookies, setUserCookie, removeUserCookie] = useCookies(["user"]);
 
   const login = () => {
-    axios.post("http://127.0.0.1:3002/auth/login", loginUser).then((res) => {
+    axios.post("https://elzian-agro-user-auth.herokuapp.com/auth/login", loginUser).then((res) => {
       setloginUser({
         email: "",
         password: "",
@@ -46,7 +46,7 @@ const AuthProvider = (props) => {
     removeCookie("token", { path: "/" });
     removeUserCookie("user", { path: "/" });
     axios
-      .get("http://127.0.0.1:3002/auth/logout", {
+      .get("https://elzian-agro-user-auth.herokuapp.com/auth/logout", {
         headers: { "x-auth-token": cookies.token },
       })
       .then(() => {});
