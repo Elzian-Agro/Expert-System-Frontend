@@ -57,8 +57,6 @@ function Cover() {
   const history = useNavigate();
   // the backend connection
   const register = () => {
-    // form validation
-    let customAlert;
     if (
       !regUser.userFirstName.trim() ||
       !regUser.userLastName.trim() ||
@@ -72,9 +70,7 @@ function Cover() {
       !regUser.userEmail.trim() ||
       !regUser.userPassword.trim()
     ) {
-
       toast.error("Fill all the required fields");
-
     } else if (
       !regUser.userEmail.trim() ||
       !regUser.userEmail.includes("@") ||
