@@ -9,6 +9,8 @@ import axios from "axios";
 import Card from "@mui/material/Card";
 import { useCookies } from "react-cookie";
 import Typography from "@mui/material/Typography";
+import MDButton from "components/MDButton";
+import { useMaterialUIController } from "context";
 import SuccessDialogBox from "./SuccessDialogBox";
 
 const CraeteSchedule = ({ light }) => {
@@ -19,6 +21,8 @@ const CraeteSchedule = ({ light }) => {
   const [meetingTime, setMeetingTime] = useState("");
   const [openSuccessDialogBox, setOpenSuccessDialogBox] = useState(false);
   const [cookies] = useCookies(["token"]);
+  const [controller] = useMaterialUIController();
+  const { sidenavColor } = controller;
 
   const paperStyle = {
     padding: "30px 20px",
@@ -86,7 +90,7 @@ const CraeteSchedule = ({ light }) => {
             Create Schedule
           </Typography>
         </Grid>
-        <form onSubmit={scheduleFormHandler}>
+        <form>
           <Grid container direction="column" spacing={2} sx={{ marginTop: 4 }}>
             <Grid item>
               <TextField
@@ -162,14 +166,15 @@ const CraeteSchedule = ({ light }) => {
               </Button>
             </Grid>
             <Grid item>
-              <Button
-                type="submit"
+              <MDButton
                 variant="contained"
-                color="primary"
+                type="submit"
+                color={sidenavColor}
+                onClick={(event) => scheduleFormHandler(event)}
                 sx={{ minWidth: 100, color: "#e0f2f1" }}
               >
                 Save
-              </Button>
+              </MDButton>
             </Grid>
           </Grid>
         </form>
