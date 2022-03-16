@@ -7,6 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -87,7 +91,7 @@ function Cover() {
       });
     } else {
       axios
-        .post("http://localhost:3002/user/add/expert", regUser)
+        .post("https://elzian-agro-user-auth.herokuapp.com/user/add/expert", regUser)
         .then(() => {
           toast.success("Successfuly Registered");
           // user navigation after a successful registration
@@ -109,7 +113,7 @@ function Cover() {
 
   const onAgeChange = (e) => {
     const re = /^[0-9\b]+$/;
-    if (re.test(e.target.value)) {
+    if (e.target.value === "" || re.test(e.target.value)) {
       setRegUser({
         ...regUser,
         userAge: e.target.value,
@@ -119,7 +123,7 @@ function Cover() {
 
   const onPhoneChange = (e) => {
     const re = /^[0-9\b]+$/;
-    if (re.test(e.target.value)) {
+    if (e.target.value === "" || re.test(e.target.value)) {
       setRegUser({
         ...regUser,
         userPhone: e.target.value,
@@ -212,19 +216,25 @@ function Cover() {
               />
             </MDBox>
             <MDBox mb={2} className={`no-border${genderFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="Gender"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setGenderFocus(true)}
-                onBlur={() => setGenderFocus(false)}
-                name="userGender"
-                value={regUser.userGender}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
+              <FormControl variant="standard" required fullWidth>
+                <InputLabel id="gender-select-label">Gender</InputLabel>
+                <Select
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  value={regUser.userGender}
+                  name="userGender"
+                  label="Gender"
+                  labelId="gender-select-label"
+                  onChange={handleChange}
+                  onFocus={() => setGenderFocus(true)}
+                  onBlur={() => setGenderFocus(false)}
+                  fullwidth
+                >
+                  <MenuItem value="Male">Male</MenuItem>
+                  <MenuItem value="Female">Female</MenuItem>
+                  <MenuItem value="Other">Other</MenuItem>
+                </Select>
+              </FormControl>
             </MDBox>
             <MDBox mb={2} className={`no-border${numberFocus ? " input-group-focus" : ""}`}>
               <MDInput
