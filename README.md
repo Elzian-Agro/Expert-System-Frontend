@@ -1,6 +1,11 @@
 # Expert System Frontend
  This is expert system frontend developed using react
 
+# Install Dependencies & Run the Server
+
+ - npm install or npm i   // To install all the dependencies
+ - npm start             // Run the server
+
 # Frameworks/Libraries used
  1. React
  2. Material UI

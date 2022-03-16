@@ -213,13 +213,15 @@ export function UploadButtons(props) {
       userBio: user.userBio,
     };
 
-    axios.put("http://localhost:3002/user/updateAuthUser", data, config).then((res) => {
-      if (res.status === 200) {
-        // console.log(res);
-      } else {
-        toast.error("error");
-      }
-    });
+    axios
+      .put("https://elzian-agro-user-auth.herokuapp.com/user/updateAuthUser", data, config)
+      .then((res) => {
+        if (res.status === 200) {
+          // console.log(res);
+        } else {
+          toast.error("error");
+        }
+      });
   }
   // Image function
   function handleSubmitImage() {
@@ -234,13 +236,15 @@ export function UploadButtons(props) {
       const data = new FormData();
       data.append("imageUri", selectedFile);
 
-      axios.put("http://localhost:3002/user/uploadAuthUser", data, config).then((res) => {
-        if (res.status === 200) {
-          toast.success("success");
-        } else {
-          toast.error("error");
-        }
-      });
+      axios
+        .put("https://elzian-agro-user-auth.herokuapp.com/user/uploadAuthUser", data, config)
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("success");
+          } else {
+            toast.error("error");
+          }
+        });
     }
   }
   const handleReset = () => {
@@ -252,7 +256,7 @@ export function UploadButtons(props) {
     };
     /* eslint no-underscore-dangle: 0 */
     axios
-      .get(`http://localhost:3002/user/get/${usercookie.user._id}`, config) // protected route
+      .get(`https://elzian-agro-user-auth.herokuapp.com/user/get/${usercookie.user._id}`, config) // protected route
       .then((res) => {
         if (res.status === 200) {
           onReset(res.data.user);
