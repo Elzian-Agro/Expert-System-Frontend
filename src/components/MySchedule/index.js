@@ -23,7 +23,7 @@ const MySchedule = () => {
   // Intergrate with Backend
   useEffect(() => {
     axios
-      .get("https://elzian-agro-expert-system.herokuapp.com/schedule/booked")
+      .get(`${process.env.REACT_APP_EXPERT_BACKEND}/schedule/booked`)
       .then((response) => setSchedules(response.data));
   }, []);
 

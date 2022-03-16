@@ -34,7 +34,7 @@ const ExpertCard = (props) => {
                   // setting a default image if profile image is null
                   src={
                     expImage != null
-                      ? `${process.env.REACT_APP_AUTH_BACKEND}uploads/images/${expImage}`
+                      ? `${process.env.REACT_APP_AUTH_BACKEND}/uploads/images/${expImage}`
                       : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
                   }
                 />

@@ -39,7 +39,7 @@ function MyScheduleCard(props) {
               alt="Expert"
               src={
                 profileImg != null
-                  ? `${process.env.REACT_APP_AUTH_BACKEND}uploads/images/${profileImg}`
+                  ? `${process.env.REACT_APP_AUTH_BACKEND}/uploads/images/${profileImg}`
                   : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
               }
             />

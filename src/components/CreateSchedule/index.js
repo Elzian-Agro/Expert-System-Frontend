@@ -57,7 +57,7 @@ const CraeteSchedule = ({ light }) => {
     };
 
     axios
-      .post("https://elzian-agro-expert-system.herokuapp.com/schedule/add", data, {
+      .post(`${process.env.REACT_APP_EXPERT_BACKEND}/schedule/add`, data, {
         headers: {
           "x-auth-token": cookies.token,
         },

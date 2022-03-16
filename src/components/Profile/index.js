@@ -32,7 +32,7 @@ function Profile({ children }) {
         : setTabsOrientation("horizontal");
     }
     /* eslint no-underscore-dangle: 0 */
-    const url = "https://elzian-agro-user-auth.herokuapp.com/user/get/".concat(usercookie.user._id);
+    const url = `${process.env.REACT_APP_AUTH_BACKEND}/user/get/${usercookie.user._id}`;
     const data = {
       params: {},
       headers: {
@@ -89,7 +89,7 @@ function Profile({ children }) {
         <Grid container spacing={5} alignItems="center">
           <Grid item marginLeft={10} marginTop={5}>
             <MDAvatar
-              src={`https://elzian-agro-user-auth.herokuapp.com/user/getProfilePhoto/${usercookie.user._id}`}
+              src={`${process.env.REACT_APP_AUTH_BACKEND}/user/getProfilePhoto/${usercookie.user._id}`}
               alt="profile-image"
               size="xl"
               shadow="sm"
