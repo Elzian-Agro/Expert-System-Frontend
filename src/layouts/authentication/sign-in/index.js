@@ -135,6 +135,7 @@ function Basic() {
                 onChange={handleChange}
                 fullWidth
                 success
+                required
               />
             </MDBox>
             <MDBox mb={2} className={`no-border${lastFocus ? " input-group-focus" : ""}`}>
@@ -149,6 +150,7 @@ function Basic() {
                 label="Password"
                 fullWidth
                 success
+                required
               />
             </MDBox>
             <MDBox mt={4} mb={1}>

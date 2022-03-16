@@ -20,7 +20,9 @@ const AllSchedule = () => {
   };
 
   const getData = () => {
-    axios.get("http://localhost:5000/schedule/").then((response) => setSchedules(response.data));
+    axios
+      .get("https://elzian-agro-expert-system.herokuapp.com/schedule/")
+      .then((response) => setSchedules(response.data));
   };
 
   useEffect(() => {
@@ -29,10 +31,12 @@ const AllSchedule = () => {
 
   const bookingSchedule = async (meetingID) => {
     try {
-      await axios.put(`http://localhost:5000/schedule/book/${meetingID}`).then((response) => {
-        getData();
-        toast.success(response.data.status); // success notification
-      });
+      await axios
+        .put(`https://elzian-agro-expert-system.herokuapp.com/schedule/book/${meetingID}`)
+        .then((response) => {
+          getData();
+          toast.success(response.data.status); // success notification
+        });
     } catch (e) {
       toast.error("something wrong"); // error notification
     }
