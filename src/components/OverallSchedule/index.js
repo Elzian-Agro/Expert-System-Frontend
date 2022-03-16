@@ -21,7 +21,7 @@ const AllSchedule = () => {
 
   const getData = () => {
     axios
-      .get("https://elzian-agro-expert-system.herokuapp.com/schedule/")
+      .get(`${process.env.REACT_APP_EXPERT_BACKEND}schedule`)
       .then((response) => setSchedules(response.data));
   };
 
@@ -32,7 +32,7 @@ const AllSchedule = () => {
   const bookingSchedule = async (meetingID) => {
     try {
       await axios
-        .put(`https://elzian-agro-expert-system.herokuapp.com/schedule/book/${meetingID}`)
+        .put(`${process.env.REACT_APP_EXPERT_BACKEND}schedule/book/${meetingID}`)
         .then((response) => {
           getData();
           toast.success(response.data.status); // success notification
