@@ -8,7 +8,8 @@ import MDTypography from "components/MDTypography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import EventIcon from "@mui/icons-material/Event";
-import EMobiledataSharpIcon from "@mui/icons-material/EMobiledataSharp";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -54,20 +55,21 @@ function MyScheduleCard(props) {
               <Grid item xs container spacing={2} justifyContent="space-between">
                 <Grid item xs={5}>
                   <MDTypography variant="body2">
-                    <EMobiledataSharpIcon color="info" fontSize="medium" />
+                    <AccountBoxIcon fontSize="small" sx={{ mx: 0.5 }} />
                     {name}
                   </MDTypography>
                 </Grid>
                 <Grid item xs={7}>
                   <MDTypography variant="body2">
-                    <EventIcon fontSize="medium" />
+                    <EventIcon fontSize="small" sx={{ mx: 1 }} />
                     {time},{date}
                   </MDTypography>
                 </Grid>
               </Grid>
               <CardActions sx={{ justifyContent: "center" }}>
                 <MDButton
-                  href="MeetingLink"
+                  component={Link}
+                  to="/create-schedule"
                   align="center"
                   variant="contained"
                   type="submit"
@@ -88,18 +90,14 @@ function MyScheduleCard(props) {
 // DefaultProps and PropTypes
 MyScheduleCard.defaultProps = {
   title: "",
-  // expImage: "",
   name: "",
   details: "",
   time: "",
   date: "",
-  // MeetingLink: "",
 };
 
 MyScheduleCard.propTypes = {
   title: PropTypes.string,
-  // expImage: PropTypes.string,
-  // MeetingLink: PropTypes.string,
   name: PropTypes.string,
   details: PropTypes.string,
   time: PropTypes.string,
