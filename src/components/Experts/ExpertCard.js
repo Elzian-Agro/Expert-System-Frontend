@@ -3,6 +3,8 @@ import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import MDTypography from "components/MDTypography";
 
 import PropTypes from "prop-types";
@@ -46,11 +48,13 @@ const ExpertCard = (props) => {
               <Grid item xs container spacing={2} justifyContent="space-between">
                 <Grid item xs={4}>
                   <MDTypography variant="body2" gutterBottom>
+                    <PersonOutlineIcon sx={{ mx: 1 }} />
                     {position}
                   </MDTypography>
                 </Grid>
                 <Grid item xs={8}>
                   <MDTypography variant="body2" gutterBottom>
+                    <CorporateFareIcon sx={{ mx: 1 }} />
                     {organization}
                   </MDTypography>
                 </Grid>
