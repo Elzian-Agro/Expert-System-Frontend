@@ -46,6 +46,7 @@ const MySchedule = () => {
                     date={schedule.Date}
                     name={schedule.ExpertName}
                     profileImg={schedule.ExpertProfile}
+                    MeetingLink={schedule.MeetingLink}
                   />
                 </Grid>
               )
