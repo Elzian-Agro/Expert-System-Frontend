@@ -37,7 +37,7 @@ function ScheduleCard(props) {
               // setting a default image if profile image is null
               src={
                 profileImg != null
-                  ? `http://localhost:3002/uploads/images/${profileImg}`
+                  ? `https://elzian-user-auth.herokuapp.com/uploads/images/${profileImg}`
                   : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
               }
             />
