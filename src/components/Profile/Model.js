@@ -214,7 +214,7 @@ export function UploadButtons(props) {
     };
 
     axios
-      .put("https://elzian-agro-user-auth.herokuapp.com/user/updateAuthUser", data, config)
+      .put(`${process.env.REACT_APP_AUTH_BACKEND}/user/updateAuthUser`, data, config)
       .then((res) => {
         if (res.status === 200) {
           // console.log(res);
@@ -237,7 +237,7 @@ export function UploadButtons(props) {
       data.append("imageUri", selectedFile);
 
       axios
-        .put("https://elzian-agro-user-auth.herokuapp.com/user/uploadAuthUser", data, config)
+        .put(`${process.env.REACT_APP_AUTH_BACKEND}/user/uploadAuthUser`, data, config)
         .then((res) => {
           if (res.status === 200) {
             toast.success("success");
@@ -256,7 +256,7 @@ export function UploadButtons(props) {
     };
     /* eslint no-underscore-dangle: 0 */
     axios
-      .get(`https://elzian-agro-user-auth.herokuapp.com/user/get/${usercookie.user._id}`, config) // protected route
+      .get(`${process.env.REACT_APP_AUTH_BACKEND}/user/get/${usercookie.user._id}`, config) // protected route
       .then((res) => {
         if (res.status === 200) {
           onReset(res.data.user);
