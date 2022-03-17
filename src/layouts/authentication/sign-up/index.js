@@ -5,6 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 // react-router-dom components
 import { Link, useNavigate } from "react-router-dom";
 
+import * as yup from "yup";
+import { useFormik } from "formik";
+
 // @mui material components
 import Card from "@mui/material/Card";
 import Select from "@mui/material/Select";
@@ -37,99 +40,80 @@ function Cover() {
   const [bioFocus, setBioFocus] = useState(false);
   const [lastFocus, setLastFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
-  // error state
-  const [inputErr, setInputErr] = useState({
-    email: false,
-    password: false,
-  });
-
-  // initialize the variales to empty strings
-  const [regUser, setRegUser] = useState({
-    userFirstName: "",
-    userLastName: "",
-    userAge: "",
-    userGender: "",
-    userEmail: "",
-    userPassword: "",
-    userPhone: "",
-    userAddress: "",
-    userQulifications: "",
-    userInstituteWork: "",
-    userBio: "",
-  });
 
   const history = useNavigate();
-  // the backend connection
-  const register = () => {
-    if (
-      !regUser.userFirstName.trim() ||
-      !regUser.userLastName.trim() ||
-      !regUser.userAddress.trim() ||
-      !regUser.userAge.trim() ||
-      !regUser.userGender.trim() ||
-      !regUser.userPhone.trim() ||
-      !regUser.userQulifications.trim() ||
-      !regUser.userInstituteWork.trim() ||
-      !regUser.userBio.trim() ||
-      !regUser.userEmail.trim() ||
-      !regUser.userPassword.trim()
-    ) {
-      toast.error("Fill all the required fields");
-    } else if (
-      !regUser.userEmail.trim() ||
-      !regUser.userEmail.includes("@") ||
-      !regUser.userEmail.endsWith(".com")
-    ) {
-      setInputErr({
-        ...inputErr,
-        email: true,
-      });
-    } else if (regUser.userPassword.trim().length < 7) {
-      setInputErr({
-        ...inputErr,
-        password: true,
-      });
-    } else {
+  // declare validation schema to the form with yup
+  const validationSchema = yup.object({
+    userFirstName: yup.string("Enter first name").required("First name is required"),
+    userLastName: yup.string("Enter last name").required("Last name is required"),
+    userGender: yup.string("Enter gender").required("Gender is required"),
+    userAge: yup.number().typeError("Age must be a number").positive().required("Age is required"),
+    userEmail: yup
+      .string("Enter email")
+      .email("Email is required with '@' and '.com'")
+      .required("Email is required"),
+    userPassword: yup
+      .string("Enter password")
+      .min(6, "Must be 6 characters")
+      .required("Password is required"),
+    userAddress: yup.string("Enter address").required("Address is required"),
+    userQulifications: yup.string("Enter qulification").required("Qulification is required"),
+    userInstituteWork: yup.string("Enter institution").required("Institution is required"),
+    userBio: yup.string("Enter bio").required("Bio is required"),
+    userPhone: yup
+      .number()
+      .typeError("Phone must be a number")
+      .positive()
+      .required("Phone number is required")
+      // eslint-disable-next-line prettier/prettier
+      .test("len", "Must be exactly 10 numbers", val => val.toString().length === 9),
+  });
+  // formik declaration
+  const formik = useFormik({
+    // initial form values
+    initialValues: {
+      userFirstName: "",
+      userLastName: "",
+      userAge: "",
+      userGender: "",
+      userEmail: "",
+      userPassword: "",
+      userPhone: 0,
+      userAddress: "",
+      userQulifications: "",
+      userInstituteWork: "",
+      userBio: "",
+    },
+    // passing declared validation schema to formik
+    validationSchema,
+    // formik handle submit declaration
+    onSubmit: (values) => {
+      const data = {
+        userFirstName: values.userFirstName,
+        userLastName: values.userLastName,
+        userAge: values.userAge,
+        userGender: values.userGender,
+        userEmail: values.userEmail,
+        userPassword: values.userPassword,
+        userPhone: values.userPhone,
+        userAddress: values.userAddress,
+        userQulifications: values.userQulifications,
+        userInstituteWork: values.userInstituteWork,
+        userBio: values.userBio,
+      };
+      // the backend connection
       axios
-        .post("https://elzian-agro-user-auth.herokuapp.com/user/add/expert", regUser)
+        .post("https://elzian-agro-user-auth.herokuapp.com/user/add/expert", data)
         .then(() => {
-          toast.success("Successfuly Registered");
+          toast.success("Expert Successfuly Registered");
           // user navigation after a successful registration
           history("/authentication/sign-in");
         })
         .catch((res) => {
           toast.error(res.body);
         });
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setRegUser({
-      ...regUser,
-      [name]: value,
-    });
-  };
-
-  const onAgeChange = (e) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === "" || re.test(e.target.value)) {
-      setRegUser({
-        ...regUser,
-        userAge: e.target.value,
-      });
-    }
-  };
-
-  const onPhoneChange = (e) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === "" || re.test(e.target.value)) {
-      setRegUser({
-        ...regUser,
-        userPhone: e.target.value,
-      });
-    }
-  };
+    },
+  });
 
   return (
     <CoverLayout image={bgImage}>
@@ -154,190 +138,204 @@ function Cover() {
           </MDTypography>
         </MDBox>
         <MDBox pt={4} pb={4} px={4}>
-          <MDBox component="form" role="form" noValidate autoComplete="off">
-            <MDBox mb={2} className={`no-border${firstFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="First Name"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setFirstFocus(true)}
-                onBlur={() => setFirstFocus(false)}
-                name="userFirstName"
-                value={regUser.userFirstName}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${secondFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="Last Name"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setSecondFocus(true)}
-                onBlur={() => setSecondFocus(false)}
-                name="userLastName"
-                value={regUser.userLastName}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${addressFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="Address"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setAddressFocus(true)}
-                onBlur={() => setAddressFocus(false)}
-                name="userAddress"
-                value={regUser.userAddress}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${ageFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="Age"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setAgeFocus(true)}
-                onBlur={() => setAgeFocus(false)}
-                name="userAge"
-                value={regUser.userAge}
-                onChange={onAgeChange}
-                fullWidth
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${genderFocus ? " input-group-focus" : ""}`}>
-              <FormControl variant="standard" required fullWidth>
-                <InputLabel id="gender-select-label">Gender</InputLabel>
-                <Select
+          <MDBox>
+            <form onSubmit={formik.handleSubmit}>
+              <MDBox mb={2} className={`no-border${firstFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="text"
+                  label="First Name"
                   variant="standard"
                   id="standard-error-helper-text"
-                  value={regUser.userGender}
-                  name="userGender"
-                  label="Gender"
-                  labelId="gender-select-label"
-                  onChange={handleChange}
-                  onFocus={() => setGenderFocus(true)}
-                  onBlur={() => setGenderFocus(false)}
-                  fullwidth
-                >
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-                </Select>
-              </FormControl>
-            </MDBox>
-            <MDBox mb={2} className={`no-border${numberFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                label="Phone Number"
-                type="text"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setNumberFocus(true)}
-                onBlur={() => setNumberFocus(false)}
-                name="userPhone"
-                value={regUser.userPhone}
-                onChange={onPhoneChange}
-                fullWidth
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${qualificationFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="Qulifications"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setQualiFocus(true)}
-                onBlur={() => setQualiFocus(false)}
-                name="userQulifications"
-                value={regUser.userQulifications}
-                onChange={handleChange}
-                fullWidth
-                error={false}
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${instFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="Institute Work"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setInstFocus(true)}
-                onBlur={() => setInstFocus(false)}
-                name="userInstituteWork"
-                value={regUser.userInstituteWork}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${bioFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="text"
-                label="Bio"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setBioFocus(true)}
-                onBlur={() => setBioFocus(false)}
-                name="userBio"
-                value={regUser.userBio}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${emailFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="userEmail"
-                label="Email"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setEmailFocus(true)}
-                onBlur={() => setEmailFocus(false)}
-                name="userEmail"
-                value={regUser.userEmail}
-                onChange={handleChange}
-                fullWidth
-                error={inputErr.email}
-                helperText={inputErr.email ? "Email is required with '@' and '.com'" : ""}
-                required
-              />
-            </MDBox>
-            <MDBox mb={2} className={`no-border${lastFocus ? " input-group-focus" : ""}`}>
-              <MDInput
-                type="password"
-                label="Password"
-                variant="standard"
-                id="standard-error-helper-text"
-                onFocus={() => setLastFocus(true)}
-                onBlur={() => setLastFocus(false)}
-                name="userPassword"
-                value={regUser.userPassword}
-                onChange={handleChange}
-                fullWidth
-                error={inputErr.password}
-                helperText={
-                  inputErr.password ? "Password is required with minimum of 6 characters" : ""
-                }
-                required
-              />
-            </MDBox>
-            <MDBox mt={4} mb={1}>
-              <MDButton onClick={register} variant="gradient" color="success" fullWidth>
-                sign up
-              </MDButton>
-            </MDBox>
+                  onFocus={() => setFirstFocus(true)}
+                  onBlur={() => setFirstFocus(false)}
+                  name="userFirstName"
+                  value={formik.values.userFirstName}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userFirstName && Boolean(formik.errors.userFirstName)}
+                  helperText={formik.touched.userFirstName && formik.errors.userFirstName}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${secondFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="text"
+                  label="Last Name"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setSecondFocus(true)}
+                  onBlur={() => setSecondFocus(false)}
+                  name="userLastName"
+                  value={formik.values.userLastName}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userLastName && Boolean(formik.errors.userLastName)}
+                  helperText={formik.touched.userLastName && formik.errors.userLastName}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${addressFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="text"
+                  label="Address"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setAddressFocus(true)}
+                  onBlur={() => setAddressFocus(false)}
+                  name="userAddress"
+                  value={formik.values.userAddress}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userAddress && Boolean(formik.errors.userAddress)}
+                  helperText={formik.touched.userAddress && formik.errors.userAddress}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${ageFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="text"
+                  label="Age"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setAgeFocus(true)}
+                  onBlur={() => setAgeFocus(false)}
+                  name="userAge"
+                  value={formik.values.userAge}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userAge && Boolean(formik.errors.userAge)}
+                  helperText={formik.touched.userAge && formik.errors.userAge}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${genderFocus ? " input-group-focus" : ""}`}>
+                <FormControl variant="standard" fullWidth>
+                  <InputLabel id="gender-select-label">Gender</InputLabel>
+                  <Select
+                    variant="standard"
+                    id="standard-error-helper-text"
+                    name="userGender"
+                    value={formik.values.userGender}
+                    onChange={formik.handleChange}
+                    error={formik.touched.userGender && Boolean(formik.errors.userGender)}
+                    helperText={formik.touched.userGender && formik.errors.userGender}
+                    label="Gender"
+                    labelId="gender-select-label"
+                    onFocus={() => setGenderFocus(true)}
+                    onBlur={() => setGenderFocus(false)}
+                    fullwidth
+                  >
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </Select>
+                </FormControl>
+              </MDBox>
+              <MDBox mb={2} className={`no-border${numberFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  label="Phone Number"
+                  type="text"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setNumberFocus(true)}
+                  onBlur={() => setNumberFocus(false)}
+                  name="userPhone"
+                  value={formik.values.userPhone}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userPhone && Boolean(formik.errors.userPhone)}
+                  helperText={formik.touched.userPhone && formik.errors.userPhone}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox
+                mb={2}
+                className={`no-border${qualificationFocus ? " input-group-focus" : ""}`}
+              >
+                <MDInput
+                  type="text"
+                  label="Qulifications"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setQualiFocus(true)}
+                  onBlur={() => setQualiFocus(false)}
+                  name="userQulifications"
+                  value={formik.values.userQulifications}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.userQulifications && Boolean(formik.errors.userQulifications)
+                  }
+                  helperText={formik.touched.userQulifications && formik.errors.userQulifications}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${instFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="text"
+                  label="Institute Work"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setInstFocus(true)}
+                  onBlur={() => setInstFocus(false)}
+                  name="userInstituteWork"
+                  value={formik.values.userInstituteWork}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.userInstituteWork && Boolean(formik.errors.userInstituteWork)
+                  }
+                  helperText={formik.touched.userInstituteWork && formik.errors.userInstituteWork}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${bioFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="text"
+                  label="Bio"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setBioFocus(true)}
+                  onBlur={() => setBioFocus(false)}
+                  name="userBio"
+                  value={formik.values.userBio}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userBio && Boolean(formik.errors.userBio)}
+                  helperText={formik.touched.userBio && formik.errors.userBio}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${emailFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="userEmail"
+                  label="Email"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setEmailFocus(true)}
+                  onBlur={() => setEmailFocus(false)}
+                  name="userEmail"
+                  value={formik.values.userEmail}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userEmail && Boolean(formik.errors.userEmail)}
+                  helperText={formik.touched.userEmail && formik.errors.userEmail}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mb={2} className={`no-border${lastFocus ? " input-group-focus" : ""}`}>
+                <MDInput
+                  type="password"
+                  label="Password"
+                  variant="standard"
+                  id="standard-error-helper-text"
+                  onFocus={() => setLastFocus(true)}
+                  onBlur={() => setLastFocus(false)}
+                  name="userPassword"
+                  value={formik.values.userPassword}
+                  onChange={formik.handleChange}
+                  error={formik.touched.userPassword && Boolean(formik.errors.userPassword)}
+                  helperText={formik.touched.userPassword && formik.errors.userPassword}
+                  fullWidth
+                />
+              </MDBox>
+              <MDBox mt={4} mb={1}>
+                <MDButton type="submit" variant="gradient" color="success" fullWidth>
+                  Expert sign up
+                </MDButton>
+              </MDBox>
+            </form>
             <MDBox mt={3} mb={1} textAlign="center">
               <MDTypography variant="button" color="text">
                 Already have an account?{" "}
