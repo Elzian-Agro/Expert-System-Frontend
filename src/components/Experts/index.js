@@ -19,7 +19,7 @@ const ExpertProfile = () => {
   // Retrieving data from Backend
   useEffect(() => {
     axios
-      .get("https://elzian-agro-user-auth.herokuapp.com/user/getExperts")
+      .get(`${process.env.REACT_APP_AUTH_BACKEND}/user/getExperts`)
       .then((response) => setData(response.data));
   }, []);
 
