@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 // @mui material components
 import Container from "@mui/material/Container";
-// import Link from "@mui/material/Link";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -17,7 +16,7 @@ function Footer({ light }) {
   const { size } = typography;
 
   return (
-    <MDBox position="fixed" width="100%" bottom={0} py={4}>
+    <MDBox width="100%" bottom={0} py={4}>
       <Container>
         <MDBox
           width="100%"
