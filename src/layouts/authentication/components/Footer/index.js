@@ -1,9 +1,11 @@
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
+// react-router-dom components
+import { Link } from "react-router-dom";
+
 // @mui material components
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -16,7 +18,7 @@ function Footer({ light }) {
   const { size } = typography;
 
   return (
-    <MDBox position="absolute" width="100%" bottom={0} py={4}>
+    <MDBox width="100%" bottom={0} py={4}>
       <Container>
         <MDBox
           width="100%"
@@ -34,18 +36,7 @@ function Footer({ light }) {
             color={light ? "white" : "text"}
             fontSize={size.sm}
           >
-            &copy; {new Date().getFullYear()}, Elzian Agro.
-            <MDBox fontSize={size.md} color={light ? "white" : "dark"} mb={-0.5} mx={0.25}>
-              {/* <Icon color="inherit" fontSize="inherit">
-                favorite
-              </Icon> */}
-            </MDBox>
-            <Link to="about-us">
-              <MDTypography variant="button" fontWeight="medium" color={light ? "white" : "dark"}>
-                {/* &nbsp;Creative Tim&nbsp; */}
-              </MDTypography>
-            </Link>
-            All Rights Reserved.
+            &copy; {new Date().getFullYear()}, Elzian Agro. All Rights Reserved.
           </MDBox>
           <MDBox
             component="ul"

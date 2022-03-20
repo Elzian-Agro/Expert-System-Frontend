@@ -3,6 +3,9 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AuthContext = createContext({});
 
 const AuthProvider = (props) => {
@@ -23,27 +26,32 @@ const AuthProvider = (props) => {
     }
   }, []);
   const login = () => {
-    axios.post("https://elzian-agro-user-auth.herokuapp.com/auth/login", loginUser).then((res) => {
-      setloginUser({
-        email: "",
-        password: "",
+    axios
+      .post("https://elzian-agro-user-auth.herokuapp.com/auth/login", loginUser)
+      .then((res) => {
+        setloginUser({
+          email: "",
+          password: "",
+        });
+        // store data in cookies
+        setCookie("token", res.data.token, {
+          path: "/",
+          sameSite: "none",
+          secure: true,
+          maxAge: 1000 * 60 * 60 * 24,
+        });
+        setUserCookie("user", res.data.user, {
+          path: "/",
+          sameSite: "none",
+          secure: true,
+          maxAge: 1000 * 60 * 60 * 24,
+        });
+        setLoggedIn(true);
+        history("/dashboard");
+      })
+      .catch((res) => {
+        toast.error(res.response.data);
       });
-      // store data in cookies
-      setCookie("token", res.data.token, {
-        path: "/",
-        sameSite: "none",
-        secure: true,
-        maxAge: 1000 * 60 * 60 * 24,
-      });
-      setUserCookie("user", res.data.user, {
-        path: "/",
-        sameSite: "none",
-        secure: true,
-        maxAge: 1000 * 60 * 60 * 24,
-      });
-      setLoggedIn(true);
-      history("/dashboard");
-    });
   };
 
   const logout = () => {
