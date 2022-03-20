@@ -24,7 +24,7 @@ import ProfileInfoCard from "../../examples/Cards/InfoCards/ProfileInfoCard";
 import { TransitionsModal } from "./Model";
 
 function Overview(props) {
-  const { p } = props;
+  const { p, setImgUrl } = props;
   return (
     <DashboardLayout>
       <MDBox mb={5} />
@@ -67,7 +67,7 @@ function Overview(props) {
           </Grid>
         </Grid>
       </MDBox>
-      <TransitionsModal user={p} />
+      <TransitionsModal user={p} setImgUrl={setImgUrl} />
     </DashboardLayout>
   );
 }

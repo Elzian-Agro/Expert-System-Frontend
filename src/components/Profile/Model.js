@@ -41,7 +41,7 @@ const style = {
 };
 
 export function TransitionsModal(props) {
-  const { user } = props;
+  const { user, setImgUrl } = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -71,7 +71,7 @@ export function TransitionsModal(props) {
               Fill the form
             </Typography>
 
-            <ValidationTextFields user={user} />
+            <ValidationTextFields user={user} setImgUrl={setImgUrl} />
           </Box>
         </Fade>
       </Modal>
@@ -80,7 +80,7 @@ export function TransitionsModal(props) {
 }
 
 export function ValidationTextFields(props) {
-  const { user } = props;
+  const { user, setImgUrl } = props;
   const [firstname, setFirstname] = React.useState(user.userFirstName);
   const [lastname, setLastname] = React.useState(user.userLastName);
   const [phone, setPhone] = React.useState(user.userPhone);
@@ -182,13 +182,13 @@ export function ValidationTextFields(props) {
             />,
           ]
         : null}
-      <UploadButtons user={user1} onReset={handleSet} />
+      <UploadButtons user={user1} onReset={handleSet} setImgUrl={setImgUrl} />
     </Box>
   );
 }
 
 export function UploadButtons(props) {
-  const { user, onReset } = props;
+  const { user, onReset, setImgUrl } = props;
   const [cookie] = useCookies(["token"]);
   const [usercookie] = useCookies(["user"]);
   const [selectedFile, setSelectedFile] = React.useState(null);
@@ -234,13 +234,28 @@ export function UploadButtons(props) {
       };
 
       const data = new FormData();
-      data.append("imageUri", selectedFile);
+      data.append("photo", selectedFile);
 
       axios
-        .put("https://elzian-agro-user-auth.herokuapp.com/user/uploadAuthUser", data, config)
+        .put("http://elzian-agro-user-auth.herokuapp.com/user/uploadAuthUser", data, config)
         .then((res) => {
           if (res.status === 200) {
             toast.success("success");
+            const url = "https://elzian-agro-user-auth.herokuapp.com/user/get/".concat(
+              usercookie.user._id
+            );
+            const data1 = {
+              params: {},
+              headers: {
+                "X-Auth-Token": cookie.token,
+                "content-type": "application/json",
+              },
+            };
+            axios.get(url, data1).then((response) => {
+              if (response.status === 200) {
+                setImgUrl(response.data.user.imageUri);
+              }
+            });
           } else {
             toast.error("error");
           }
