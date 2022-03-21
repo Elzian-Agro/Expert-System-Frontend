@@ -58,6 +58,7 @@ export default function App() {
   // eslint-disable-next-line no-unused-vars
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+  const [newRoutes, setNewRoutes] = useState([]);
 
   // Cache for the rtl
   useMemo(() => {
@@ -91,6 +92,13 @@ export default function App() {
   // Setting the dir attribute for the body element
   useEffect(() => {
     document.body.setAttribute("dir", direction);
+
+    const tempRoutes = routes
+      .filter((item) => item.key !== "sign-in")
+      .filter((item) => item.key !== "sign-up")
+      .filter((item) => item.key !== "farmer-sign-up");
+
+    setNewRoutes(tempRoutes);
   }, [direction]);
 
   // Setting page scroll to 0 when changing the route
@@ -112,6 +120,7 @@ export default function App() {
       return null;
     });
 
+  console.log(newRoutes);
   const configsButton = (
     <MDBox
       display="flex"
@@ -145,7 +154,7 @@ export default function App() {
             color={sidenavColor}
             brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
             brandName="Material Dashboard 2"
-            routes={routes}
+            routes={newRoutes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
           />
