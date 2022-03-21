@@ -32,6 +32,7 @@ const AuthProvider = (props) => {
         setloginUser({
           email: "",
           password: "",
+          userType: res.data.userType,
         });
         // store data in cookies
         setCookie("token", res.data.token, {

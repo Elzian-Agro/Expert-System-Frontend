@@ -47,7 +47,7 @@ const CraeteSchedule = ({ light }) => {
         },
       }
     );
-    console.log(response);
+
     const loggedUser = response.data;
     // const loggedUser = await localStorage.getItem("user");
     // const obj = JSON.parse(loggedUser);
