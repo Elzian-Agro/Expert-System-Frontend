@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
 import { useCookies } from "react-cookie";
-import axios from "axios";
+// import axios from "axios";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import MDBox from "../MDBox";
@@ -34,19 +34,29 @@ function Profile({ children }) {
     }
     /* eslint no-underscore-dangle: 0 */
     const url = `${process.env.REACT_APP_AUTH_BACKEND}/user/get/${usercookie.user._id}`;
-    const data = {
-      params: {},
-      headers: {
-        "X-Auth-Token": cookie.token,
-        "content-type": "application/json",
-      },
+    const headers = {
+      "X-Auth-Token": cookie.token,
+      "content-type": "application/json",
     };
-    await axios.get(url, data).then((res) => {
-      if (res.status === 200) {
-        setUser(res.data.user);
-        setImgUrl(res.data.user.imageUri);
-      }
-    });
+    console.log("token :", cookie.token);
+    console.log("id :", usercookie.user._id);
+    console.log("url :", url);
+    try {
+      await fetch(url, { headers })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setUser(data.user);
+          setImgUrl(data.user.imageUri);
+        })
+
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log("url :", url);
+    } catch (err) {
+      console.log(err);
+    }
 
     /** 
      The event listener that's calling the handleTabsOrientation function when resizing the window.
