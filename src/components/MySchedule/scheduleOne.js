@@ -7,6 +7,9 @@ import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import EventIcon from "@mui/icons-material/Event";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -36,7 +39,7 @@ function MyScheduleCard(props) {
               alt="Expert"
               src={
                 profileImg != null
-                  ? `https://elzian-agro-user-auth.herokuapp.com/uploads/images/${profileImg}`
+                  ? `${process.env.REACT_APP_AUTH_BACKEND}/uploads/images/${profileImg}`
                   : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
               }
             />
@@ -51,17 +54,22 @@ function MyScheduleCard(props) {
               </MDTypography>
               <Grid item xs container spacing={2} justifyContent="space-between">
                 <Grid item xs={5}>
-                  <MDTypography variant="body2">{name}</MDTypography>
+                  <MDTypography variant="body2">
+                    <AccountBoxIcon fontSize="small" sx={{ mx: 0.5 }} />
+                    {name}
+                  </MDTypography>
                 </Grid>
                 <Grid item xs={7}>
                   <MDTypography variant="body2">
+                    <EventIcon fontSize="small" sx={{ mx: 1 }} />
                     {time},{date}
                   </MDTypography>
                 </Grid>
               </Grid>
               <CardActions sx={{ justifyContent: "center" }}>
                 <MDButton
-                  href="#"
+                  component={Link}
+                  to="/create-schedule"
                   align="center"
                   variant="contained"
                   type="submit"
@@ -82,7 +90,6 @@ function MyScheduleCard(props) {
 // DefaultProps and PropTypes
 MyScheduleCard.defaultProps = {
   title: "",
-  // expImage: "",
   name: "",
   details: "",
   time: "",
@@ -91,7 +98,6 @@ MyScheduleCard.defaultProps = {
 
 MyScheduleCard.propTypes = {
   title: PropTypes.string,
-  // expImage: PropTypes.string,
   name: PropTypes.string,
   details: PropTypes.string,
   time: PropTypes.string,
