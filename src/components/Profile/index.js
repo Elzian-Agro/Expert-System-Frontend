@@ -38,14 +38,10 @@ function Profile({ children }) {
       "X-Auth-Token": cookie.token,
       "content-type": "application/json",
     };
-    console.log("token :", cookie.token);
-    console.log("id :", usercookie.user._id);
-    console.log("url :", url);
     try {
       await fetch(url, { headers })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setUser(data.user);
           setImgUrl(data.user.imageUri);
         })
@@ -53,7 +49,6 @@ function Profile({ children }) {
         .catch((err) => {
           console.log(err);
         });
-      console.log("url :", url);
     } catch (err) {
       console.log(err);
     }
