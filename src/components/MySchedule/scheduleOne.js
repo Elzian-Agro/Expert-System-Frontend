@@ -9,7 +9,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import EventIcon from "@mui/icons-material/Event";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -26,7 +26,7 @@ const Img = styled("img")({
 
 // MySchedule card
 function MyScheduleCard(props) {
-  const { title, name, details, time, date, profileImg } = props;
+  const { title, name, details, time, date, profileImg, MeetingLink } = props;
   const [controller] = useMaterialUIController();
   const { sidenavColor } = controller;
 
@@ -68,8 +68,9 @@ function MyScheduleCard(props) {
               </Grid>
               <CardActions sx={{ justifyContent: "center" }}>
                 <MDButton
-                  component={Link}
-                  to="/create-schedule"
+                  // component={Link}
+                  // to={MeetingLink}
+                  onClick={() => window.open(MeetingLink, "_blank")}
                   align="center"
                   variant="contained"
                   type="submit"

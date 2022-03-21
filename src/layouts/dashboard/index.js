@@ -31,6 +31,7 @@ function Dashboard() {
       },
     });
     setMeetingData(res.data);
+    console.log(res.data);
   };
 
   useEffect(() => {
@@ -109,6 +110,7 @@ function Dashboard() {
                   details={meeting.Description}
                   name={meeting.ExpertName}
                   time={meeting.Time.concat(" ").concat(meeting.Date)}
+                  MeetingLink={meeting.MeetingLink}
                 />
               </Grid>
             ))}
