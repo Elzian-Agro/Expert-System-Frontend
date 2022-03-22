@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 // import axios from "axios";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -47,10 +48,10 @@ function Profile({ children }) {
         })
 
         .catch((err) => {
-          console.log(err);
+          toast.error(err);
         });
     } catch (err) {
-      console.log(err);
+      toast.error(err);
     }
 
     /** 
