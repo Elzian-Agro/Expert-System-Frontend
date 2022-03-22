@@ -15,6 +15,8 @@ import PropTypes from "prop-types";
 
 import { useMaterialUIController } from "context";
 
+import Expert from "../../assets/images/Expert.png";
+
 // Image style
 const Img = styled("img")({
   margin: "auto",
@@ -35,14 +37,7 @@ function MyScheduleCard(props) {
       <CardContent sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid item>
-            <Img
-              alt="Expert"
-              src={
-                profileImg != null
-                  ? `${process.env.REACT_APP_AUTH_BACKEND}/uploads/images/${profileImg}`
-                  : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
-              }
-            />
+            <Img alt="Expert" src={profileImg != null ? `${profileImg}` : { Expert }} />
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs>
@@ -95,6 +90,7 @@ MyScheduleCard.defaultProps = {
   details: "",
   time: "",
   date: "",
+  profileImg: "",
 };
 
 MyScheduleCard.propTypes = {
@@ -103,6 +99,7 @@ MyScheduleCard.propTypes = {
   details: PropTypes.string,
   time: PropTypes.string,
   date: PropTypes.string,
+  profileImg: PropTypes.string,
 };
 
 export default MyScheduleCard;
