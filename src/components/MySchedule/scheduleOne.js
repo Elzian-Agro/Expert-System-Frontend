@@ -37,7 +37,7 @@ function MyScheduleCard(props) {
       <CardContent sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid item>
-            <Img alt="Expert" src={profileImg != null ? `${profileImg}` : { Expert }} />
+            <Img alt="Expert" src={profileImg != null ? `${profileImg}` : `${Expert}`} />
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs>
