@@ -39,9 +39,19 @@ const CraeteSchedule = ({ light }) => {
 
   const scheduleFormHandler = async (event) => {
     event.preventDefault();
-    const loggedUser = await localStorage.getItem("user");
-    const obj = JSON.parse(loggedUser);
-    const { _id, userFirstName, imageUri, userType } = obj;
+    const response = await axios.get(
+      "https://elzian-agro-user-auth.herokuapp.com/user/getAuthUser",
+      {
+        headers: {
+          "x-auth-token": cookies.token,
+        },
+      }
+    );
+
+    const loggedUser = response.data;
+    // const loggedUser = await localStorage.getItem("user");
+    // const obj = JSON.parse(loggedUser);
+    const { _id, userFirstName, imageUri, userType } = loggedUser;
 
     const data = {
       ExpertID: _id,

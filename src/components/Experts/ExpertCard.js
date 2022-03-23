@@ -8,6 +8,7 @@ import CorporateFareRoundedIcon from "@mui/icons-material/CorporateFareRounded";
 import MDTypography from "components/MDTypography";
 
 import PropTypes from "prop-types";
+import Expert from "../../assets/images/Expert.png";
 
 const Img = styled("img")({
   margin: "auto",
@@ -30,11 +31,7 @@ const ExpertCard = (props) => {
                 <Img
                   alt="Expert Profile"
                   // setting a default image if profile image is null
-                  src={
-                    expImage != null
-                      ? `${expImage}`
-                      : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
-                  }
+                  src={expImage != null ? `${expImage}` : `${Expert}`}
                 />
               </Grid>
               <Grid item xs={12} sm container>

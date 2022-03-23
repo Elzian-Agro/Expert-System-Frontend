@@ -9,11 +9,13 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import EventIcon from "@mui/icons-material/Event";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
 import { useMaterialUIController } from "context";
+
+import Expert from "../../assets/images/Expert.png";
 
 // Image style
 const Img = styled("img")({
@@ -26,7 +28,7 @@ const Img = styled("img")({
 
 // MySchedule card
 function MyScheduleCard(props) {
-  const { title, name, details, time, date, profileImg } = props;
+  const { title, name, details, time, date, profileImg, MeetingLink } = props;
   const [controller] = useMaterialUIController();
   const { sidenavColor } = controller;
 
@@ -35,14 +37,7 @@ function MyScheduleCard(props) {
       <CardContent sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid item>
-            <Img
-              alt="Expert"
-              src={
-                profileImg != null
-                  ? `${process.env.REACT_APP_AUTH_BACKEND}/uploads/images/${profileImg}`
-                  : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
-              }
-            />
+            <Img alt="Expert" src={profileImg != null ? `${profileImg}` : `${Expert}`} />
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs>
@@ -68,8 +63,9 @@ function MyScheduleCard(props) {
               </Grid>
               <CardActions sx={{ justifyContent: "center" }}>
                 <MDButton
-                  component={Link}
-                  to="/create-schedule"
+                  // component={Link}
+                  // to={MeetingLink}
+                  onClick={() => window.open(MeetingLink, "_blank")}
                   align="center"
                   variant="contained"
                   type="submit"
@@ -94,6 +90,7 @@ MyScheduleCard.defaultProps = {
   details: "",
   time: "",
   date: "",
+  profileImg: "",
 };
 
 MyScheduleCard.propTypes = {
@@ -102,6 +99,7 @@ MyScheduleCard.propTypes = {
   details: PropTypes.string,
   time: PropTypes.string,
   date: PropTypes.string,
+  profileImg: PropTypes.string,
 };
 
 export default MyScheduleCard;
