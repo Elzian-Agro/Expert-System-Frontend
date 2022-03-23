@@ -31,7 +31,6 @@ function Dashboard() {
       },
     });
     setMeetingData(res.data);
-    console.log(res.data);
   };
 
   useEffect(() => {
