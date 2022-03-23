@@ -8,6 +8,7 @@ import CorporateFareRoundedIcon from "@mui/icons-material/CorporateFareRounded";
 import MDTypography from "components/MDTypography";
 
 import PropTypes from "prop-types";
+import Expert from "../../assets/images/Expert.png";
 
 const Img = styled("img")({
   margin: "auto",
@@ -20,8 +21,6 @@ const Img = styled("img")({
 
 const ExpertCard = (props) => {
   const { name, description, position, organization, expImage } = props;
-  console.log("fsdljfsljdflsdflsdflsdfsd", process.env.NODE_ENV);
-  console.log("fsdljfsljdflsdflsdflsdfsd", process.env.REACT_APP_EXPERT_BACKEND);
   return (
     <Grid container alignItems="center" justifyContent="center">
       <Grid item style={{ width: "550px" }}>
@@ -32,11 +31,7 @@ const ExpertCard = (props) => {
                 <Img
                   alt="Expert Profile"
                   // setting a default image if profile image is null
-                  src={
-                    expImage != null
-                      ? `${process.env.REACT_APP_AUTH_BACKEND}/uploads/images/${expImage}`
-                      : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
-                  }
+                  src={expImage != null ? `${expImage}` : `${Expert}`}
                 />
               </Grid>
               <Grid item xs={12} sm container>

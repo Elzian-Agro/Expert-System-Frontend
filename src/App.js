@@ -38,6 +38,8 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "co
 // Images
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 import { useAuth } from "./auth-context";
 
 export default function App() {
@@ -58,6 +60,8 @@ export default function App() {
   // eslint-disable-next-line no-unused-vars
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+  const [newRoutes, setNewRoutes] = useState([]);
+  const [cookies] = useCookies(["token"]);
 
   // Cache for the rtl
   useMemo(() => {
@@ -89,8 +93,31 @@ export default function App() {
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
   // Setting the dir attribute for the body element
-  useEffect(() => {
+  useEffect(async () => {
     document.body.setAttribute("dir", direction);
+
+    const response = await axios.get(
+      "https://elzian-agro-user-auth.herokuapp.com/user/getAuthUser",
+      {
+        headers: {
+          "x-auth-token": cookies.token,
+        },
+      }
+    );
+
+    // const loggedUser = response.data;
+    // const { userType } = loggedUser;
+
+    let tempRoutes = routes
+      .filter((item) => item.key !== "sign-in")
+      .filter((item) => item.key !== "sign-up")
+      .filter((item) => item.key !== "farmer-sign-up");
+
+    if (response.data.user.userType === "Farmer") {
+      const farmerRoutes = tempRoutes.filter((item) => item.key !== "create-schedule");
+      tempRoutes = farmerRoutes;
+    }
+    setNewRoutes(tempRoutes);
   }, [direction]);
 
   // Setting page scroll to 0 when changing the route
@@ -145,7 +172,7 @@ export default function App() {
             color={sidenavColor}
             brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
             brandName="Material Dashboard 2"
-            routes={routes}
+            routes={newRoutes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
           />

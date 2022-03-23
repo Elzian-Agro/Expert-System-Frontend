@@ -41,11 +41,12 @@ const MySchedule = () => {
                 <Grid key={schedule._id} item xs={12} lg={6}>
                   <MyScheduleCard
                     details={schedule.Description}
+                    profileImg={schedule.imageUri}
+                    // profileImg={schedule.ExpertProfile}
                     title={schedule.MeetingTitle}
                     time={schedule.Time}
                     date={schedule.Date}
                     name={schedule.ExpertName}
-                    profileImg={schedule.ExpertProfile}
                     MeetingLink={schedule.MeetingLink}
                   />
                 </Grid>

@@ -31,6 +31,7 @@ function Dashboard() {
       },
     });
     setMeetingData(res.data);
+    console.log(res.data);
   };
 
   useEffect(() => {
@@ -101,7 +102,7 @@ function Dashboard() {
         <Grid item>
           <Grid container justifyContent="center" spacing={2}>
             {meetingData.map((meeting) => (
-              <Grid item sm={12} md={6} lg={4} key={meeting.MeetingTitle + meeting.Time}>
+              <Grid item xs={12} sm={10} md={10} lg={5} key={meeting.MeetingTitle + meeting.Time}>
                 <RecipeReviewCard
                   key={meeting.MeetingTitle + meeting.Time}
                   profileImg="meet1.jpg"
@@ -109,6 +110,7 @@ function Dashboard() {
                   details={meeting.Description}
                   name={meeting.ExpertName}
                   time={meeting.Time.concat(" ").concat(meeting.Date)}
+                  MeetingLink={meeting.MeetingLink}
                 />
               </Grid>
             ))}
