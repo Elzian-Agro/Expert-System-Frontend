@@ -1,10 +1,6 @@
 import React from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-// import AppBar from "@mui/material/AppBar";
-// import Tabs from "@mui/material/Tabs";
-// import Tab from "@mui/material/Tab";
-// import Icon from "@mui/material/Icon";
 import { IconButton } from "@mui/material";
 
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -14,9 +10,6 @@ import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import MDBox from "../MDBox";
 import MDTypography from "../MDTypography";
 import MDAvatar from "../MDAvatar/index";
-
-// Material Dashboard 2 PRO React base styles
-// import breakpoints from "../../assets/theme/base/breakpoints";
 
 // Images
 import backgroundImage from "../../assets/images/bg-paddy.jpg";
@@ -61,7 +54,7 @@ const AboutUs = () => (
         alignItems: "center",
         display: "flex",
         mt: -2,
-        mx: 3,
+        mx: 6,
         py: 2,
         px: 2,
       }}
@@ -89,7 +82,7 @@ const AboutUs = () => (
               {about}
             </MDTypography>
           </MDBox>
-          <MDBox height="100%" mt={2} mx={2} lineHeight={1}>
+          <MDBox height="100%" mt={2} mx={6} lineHeight={1}>
             <MDTypography
               variant="button"
               color="text"
@@ -116,25 +109,22 @@ const AboutUs = () => (
             }}
           >
             <IconButton>
-              <RemoveRedEyeIcon />
+              <TrackChangesIcon />
             </IconButton>
             <MDTypography variant="h4" textAlign="center" fontWeight="medium" mt={1}>
-              Vision
-              {/* <IconButton>
-                <RemoveRedEyeIcon />
-              </IconButton> */}
+              Mission
             </MDTypography>
             <MDBox height="100%" mt={1.5} lineHeight={1}>
               <MDTypography
                 variant="button"
                 color="text"
-                display="flex"
-                minHeight="6.75rem"
-                align="center"
-                fontWeight="regular"
                 justifyContent="center"
+                fontWeight="regular"
+                minHeight="6.75rem"
+                display="flex"
+                align="center"
               >
-                {vision}
+                {mission}
               </MDTypography>
             </MDBox>
           </Card>
@@ -150,85 +140,28 @@ const AboutUs = () => (
             }}
           >
             <IconButton>
-              <TrackChangesIcon />
+              <RemoveRedEyeIcon />
             </IconButton>
             <MDTypography variant="h4" textAlign="center" fontWeight="medium" mt={1}>
-              Mission
-              {/* <IconButton>
-                <TrackChangesIcon />
-              </IconButton> */}
+              Vision
             </MDTypography>
             <MDBox height="100%" mt={1.5} lineHeight={1}>
               <MDTypography
                 variant="button"
                 color="text"
-                justifyContent="center"
-                fontWeight="regular"
-                minHeight="6.75rem"
                 display="flex"
+                minHeight="6.75rem"
                 align="center"
+                fontWeight="regular"
+                justifyContent="center"
               >
-                {mission}
-              </MDTypography>
-            </MDBox>
-          </Card>
-        </Grid>
-      </Grid>
-    </Card>
-    {/* <Grid item>
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={10} md={10} lg={6}>
-          <Card
-            sx={{
-              position: "relative",
-              mt: -2,
-              mx: 3,
-              py: 2,
-              px: 2,
-            }}
-          >
-            <MDTypography variant="h4" fontWeight="medium" mt={2}>
-              Vision
-              <IconButton>
-                <RemoveRedEyeIcon />
-              </IconButton>
-            </MDTypography>
-            <MDBox height="100%" mt={1} lineHeight={1}>
-              <MDTypography variant="button" color="text" fontWeight="regular">
                 {vision}
               </MDTypography>
             </MDBox>
           </Card>
         </Grid>
       </Grid>
-    </Grid>
-    <Grid item>
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={10} md={10} lg={6}>
-          <Card
-            sx={{
-              position: "relative",
-              mt: -2,
-              mx: 3,
-              py: 2,
-              px: 2,
-            }}
-          >
-            <MDTypography variant="h4" fontWeight="medium" mt={2}>
-              Mission
-              <IconButton>
-                <TrackChangesIcon />
-              </IconButton>
-            </MDTypography>
-            <MDBox height="100%" mt={1} lineHeight={1}>
-              <MDTypography variant="button" color="text" fontWeight="regular">
-                {mission}
-              </MDTypography>
-            </MDBox>
-          </Card>
-        </Grid>
-      </Grid>
-    </Grid> */}
+    </Card>
   </MDBox>
 );
 
