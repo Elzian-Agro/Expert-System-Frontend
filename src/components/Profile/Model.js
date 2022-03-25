@@ -15,6 +15,7 @@ import { Badge, Avatar } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Grid from "@mui/material/Grid";
 import SaveIcon from "@mui/icons-material/Save";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { withStyles } from "@mui/styles";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import Icon from "@mui/material/Icon";
@@ -313,11 +314,11 @@ export function UploadButtons(props) {
         <Grid item>
           <Button
             variant="contained"
-            startIcon={<SaveIcon />}
+            startIcon={<CameraAltIcon />}
             sx={{ color: "#e0f2f1" }}
             onClick={() => handleSubmitImage()}
           >
-            Image
+            Save
           </Button>
         </Grid>
       </Grid>

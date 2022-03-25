@@ -11,8 +11,14 @@ import CardActions from "@mui/material/CardActions";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import AccountBox from "@mui/icons-material/AccountBox";
+import EventIcon from "@mui/icons-material/Event";
+
 import { useMaterialUIController } from "context";
 import PropTypes from "prop-types";
+
+import Expert from "../../assets/images/Expert.png";
 
 const Img = styled("img")({
   margin: "auto",
@@ -34,27 +40,36 @@ function ScheduleCard(props) {
             <Img
               alt="profile"
               // setting a default image if profile image is null
-              src={
-                profileImg != null
-                  ? `${process.env.REACT_APP_AUTH_BACKEND}/uploads/images/${profileImg}`
-                  : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=160"
-              }
+              src={profileImg != null ? `${profileImg}` : `${Expert}`}
             />
           </Grid>
           <Grid item xs={12} sm container>
-            <Grid item xs>
+            <Grid item xs align="center">
               <Typography gutterBottom variant="h5" component="div">
                 {title}
               </Typography>
               <MDTypography color="text" fontWeight="light">
+                <AccountBox color="black" sx={{ mx: 1 }} />
                 {name}
               </MDTypography>
               <MDTypography variant="button" color="text" fontWeight="light">
                 {details}
               </MDTypography>
-              <MDTypography color="text" fontWeight="light">
-                {date}, {time}
-              </MDTypography>
+              <Grid item xs container>
+                <Grid item xs={7}>
+                  <MDTypography color="text" fontWeight="light">
+                    <EventIcon color="black" sx={{ mx: 1 }} />
+                    {date}
+                  </MDTypography>
+                </Grid>
+                <Grid item xs={5}>
+                  <MDTypography color="text" fontWeight="light">
+                    <AccessTimeIcon color="black" sx={{ mx: 1 }} />
+                    {time}
+                  </MDTypography>
+                </Grid>
+              </Grid>
+
               <CardActions sx={{ justifyContent: "center" }}>
                 <MDButton
                   variant="contained"

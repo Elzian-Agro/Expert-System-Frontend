@@ -68,18 +68,20 @@ const AboutUs = () => (
     >
       <Grid container spacing={5} justifyContent="center" alignItems="center">
         <Grid item>
-          <MDAvatar
-            src={profilepic}
-            alt="profile-image"
-            size="xl"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            shadow="sm"
-          />
-          <MDTypography variant="h4" textAlign="center" fontWeight="medium" mt={2}>
-            {title}
-          </MDTypography>
+          <MDBox mx={9}>
+            <MDAvatar
+              src={profilepic}
+              alt="profile-image"
+              size="xl"
+              alignItems="center"
+              shadow="sm"
+            />
+          </MDBox>
+          <MDBox>
+            <MDTypography variant="h4" textAlign="center" fontWeight="medium" mt={2}>
+              {title}
+            </MDTypography>
+          </MDBox>
         </Grid>
         <Grid item>
           <MDBox height="100%" mt={0.5} lineHeight={10}>
@@ -87,7 +89,7 @@ const AboutUs = () => (
               {about}
             </MDTypography>
           </MDBox>
-          <MDBox height="100%" mt={1} lineHeight={1}>
+          <MDBox height="100%" mt={2} mx={2} lineHeight={1}>
             <MDTypography
               variant="button"
               color="text"
@@ -127,7 +129,8 @@ const AboutUs = () => (
                 variant="button"
                 color="text"
                 display="flex"
-                align="justify"
+                minHeight="6.75rem"
+                align="center"
                 fontWeight="regular"
                 justifyContent="center"
               >
@@ -161,8 +164,9 @@ const AboutUs = () => (
                 color="text"
                 justifyContent="center"
                 fontWeight="regular"
+                minHeight="6.75rem"
                 display="flex"
-                align="justify"
+                align="center"
               >
                 {mission}
               </MDTypography>
