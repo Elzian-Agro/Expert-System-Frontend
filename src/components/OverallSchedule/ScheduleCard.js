@@ -40,7 +40,7 @@ function ScheduleCard(props) {
             <Img
               alt="profile"
               // setting a default image if profile image is null
-              src={profileImg != null ? `${profileImg}` : `${Expert}`}
+              src={profileImg || Expert}
             />
           </Grid>
           <Grid item xs={12} sm container>

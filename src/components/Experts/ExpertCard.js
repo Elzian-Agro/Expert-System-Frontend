@@ -31,7 +31,7 @@ const ExpertCard = (props) => {
                 <Img
                   alt="Expert Profile"
                   // setting a default image if profile image is null
-                  src={expImage != null ? `${expImage}` : `${Expert}`}
+                  src={expImage || Expert}
                 />
               </Grid>
               <Grid item xs={12} sm container>
