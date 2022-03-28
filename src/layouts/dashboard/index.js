@@ -6,7 +6,7 @@ import Zoom from "@mui/material/Zoom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import ExpertCard from "../../components/Experts/ExpertCard";
-import MeetingCards from "../../components/MySchedule/scheduleOne";
+import MeetingCard from "../../components/MySchedule/scheduleOne";
 
 function Dashboard() {
   const checked = true;
@@ -102,7 +102,7 @@ function Dashboard() {
           <Grid container justifyContent="center" spacing={2}>
             {meetingData.map((meeting) => (
               <Grid item xs={12} sm={10} md={10} lg={5} key={meeting.MeetingTitle + meeting.Time}>
-                <MeetingCards
+                <MeetingCard
                   key={meeting.MeetingTitle + meeting.Time}
                   profileImg={meeting.ExpertProfile}
                   title={meeting.MeetingTitle}
