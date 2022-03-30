@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 /** 
   All of the routes for the Soft UI Dashboard React are added here,
   You can add a new route, customize the routes and delete the routes here.
@@ -35,12 +20,12 @@ Coded by www.creative-tim.com
   10. The `component` key is used to store the component of its route.
 */
 
+// @mui icons
 import Icon from "@mui/material/Icon";
-import Dashboard from "./layouts/dashboard";
-// import Tables from "layouts/tables";
 
-// import Notifications from "layouts/notifications";
-// import Profile from "layouts/profile";
+// pages
+import Dashboard from "./layouts/dashboard";
+import Documentation from "./layouts/documentation";
 import ContactUs from "./components/ContactUs";
 import CreateSchedule from "./components/CreateSchedule";
 import MySchedule from "./components/MySchedule";
@@ -50,8 +35,6 @@ import ExpertCard from "./components/Experts";
 import SignUp from "./layouts/authentication/sign-up";
 import FarmerSignUp from "./layouts/authentication/farmer-sign-up";
 import AboutUs from "./components/AboutUs";
-
-// @mui icons
 import Profile from "./components/Profile";
 
 const routes = [
@@ -142,6 +125,14 @@ const routes = [
     icon: <Icon fontSize="small">info</Icon>,
     route: "/about-us",
     component: <AboutUs />,
+  },
+  {
+    type: "collapse",
+    name: "Documentation",
+    key: "documentation",
+    icon: <Icon fontSize="small">article</Icon>,
+    route: "/documentation",
+    component: <Documentation />,
   },
 ];
 

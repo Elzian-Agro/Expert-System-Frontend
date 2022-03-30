@@ -1,0 +1,37 @@
+import { useState } from "react";
+
+// Material UI components
+import { Container, Grid, Tabs, Tab } from "@mui/material";
+
+// page components
+import Dashboard from "./docs/dashboard";
+import Configurator from "./docs/configurator";
+import Contact from "./docs/contact";
+
+function Documentation() {
+  const [pageIndex, setPageIndex] = useState(0);
+
+  // doc pages
+  const pages = [
+    { id: 0, label: "Dashboard", component: <Dashboard /> },
+    { id: 1, label: "Contact", component: <Contact /> },
+    { id: 2, label: "Configurator", component: <Configurator /> },
+  ];
+
+  return (
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={4} lg={3}>
+        <Tabs value={pageIndex} orientation="vertical" aria-label="nav tabs example">
+          {pages.map((page) => (
+            <Tab key={page.id} label={page.label} onClick={() => setPageIndex(page.id)} />
+          ))}
+        </Tabs>
+      </Grid>
+      <Grid item xs={12} md={8} lg={9}>
+        <Container>{pages[pageIndex].component}</Container>
+      </Grid>
+    </Grid>
+  );
+}
+
+export default Documentation;
