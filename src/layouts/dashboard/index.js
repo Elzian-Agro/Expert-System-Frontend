@@ -6,7 +6,7 @@ import Zoom from "@mui/material/Zoom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import ExpertCard from "../../components/Experts/ExpertCard";
-import RecipeReviewCard from "../../components/MySchedule/scheduleOne";
+import MeetingCard from "../../components/MySchedule/scheduleOne";
 
 function Dashboard() {
   const checked = true;
@@ -15,7 +15,7 @@ function Dashboard() {
   const [meetingData, setMeetingData] = useState([]);
 
   const getExpertData = async () => {
-    const res = await axios.get("https://elzian-agro-user-auth.herokuapp.com/user/getExperts", {
+    const res = await axios.get(`${process.env.REACT_APP_AUTH_BACKEND}/user/getExperts`, {
       headers: {
         "x-auth-token": cookies.token,
       },
@@ -25,7 +25,7 @@ function Dashboard() {
   };
 
   const getMeetingsData = async () => {
-    const res = await axios.get("https://elzian-agro-expert-system.herokuapp.com/schedule/booked", {
+    const res = await axios.get(`${process.env.REACT_APP_EXPERT_BACKEND}/schedule/booked`, {
       headers: {
         "x-auth-token": cookies.token,
       },
@@ -102,9 +102,9 @@ function Dashboard() {
           <Grid container justifyContent="center" spacing={2}>
             {meetingData.map((meeting) => (
               <Grid item xs={12} sm={10} md={10} lg={5} key={meeting.MeetingTitle + meeting.Time}>
-                <RecipeReviewCard
+                <MeetingCard
                   key={meeting.MeetingTitle + meeting.Time}
-                  profileImg="meet1.jpg"
+                  profileImg={meeting.ExpertProfile}
                   title={meeting.MeetingTitle}
                   details={meeting.Description}
                   name={meeting.ExpertName}

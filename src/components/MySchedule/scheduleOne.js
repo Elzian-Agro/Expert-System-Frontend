@@ -1,4 +1,6 @@
 import * as React from "react";
+
+// material UI components
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -37,7 +39,7 @@ function MyScheduleCard(props) {
       <CardContent sx={{ mt: 2 }}>
         <Grid container spacing={2}>
           <Grid item>
-            <Img alt="Expert" src={profileImg != null ? `${profileImg}` : `${Expert}`} />
+            <Img alt="Expert" src={profileImg || Expert} />
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs>

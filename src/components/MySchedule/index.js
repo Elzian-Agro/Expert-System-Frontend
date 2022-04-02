@@ -27,7 +27,7 @@ const MySchedule = () => {
       .then((response) => setSchedules(response.data));
   }, []);
 
-  if (schedules === 0) {
+  if (useState([])) {
     return <div>There are no booked schedules</div>;
   }
   return (
