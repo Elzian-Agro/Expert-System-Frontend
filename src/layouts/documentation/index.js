@@ -7,6 +7,7 @@ import { Container, Grid, Tabs, Tab } from "@mui/material";
 import Dashboard from "./docs/dashboard";
 import Configurator from "./docs/configurator";
 import Contact from "./docs/contact";
+import Expert from "./docs/expert";
 
 function Documentation() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -16,6 +17,7 @@ function Documentation() {
     { id: 0, label: "Dashboard", component: <Dashboard /> },
     { id: 1, label: "Contact", component: <Contact /> },
     { id: 2, label: "Configurator", component: <Configurator /> },
+    { id: 3, label: "Expert", component: <Expert /> },
   ];
 
   return (
