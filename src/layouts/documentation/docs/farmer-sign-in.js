@@ -1,15 +1,11 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 
+// Image component
+import Img from "../Img";
+// images
 import mainExpert1 from "../../../assets/images/sign up farmer1.png";
 import mainExpert2 from "../../../assets/images/sign up farmer2.png";
-
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  width: "100%",
-});
 
 function Farmer() {
   return (
@@ -28,16 +24,8 @@ function Farmer() {
           age, gender, number, qualification, bio, email and the password. The entering email and
           the password will be your login credentials.
         </Typography>
-        <Img
-          alt="screenshot of expert user documentation"
-          // setting a default image if profile image is null
-          src={mainExpert1}
-        />
-        <Img
-          alt="screenshot of expert user documentation"
-          // setting a default image if profile image is null
-          src={mainExpert2}
-        />
+        <Img alt="screenshot of expert user documentation" src={mainExpert1} />
+        <Img alt="screenshot of expert user documentation" src={mainExpert2} />
         <Typography variant="body2" gutterBottom mt={2}>
           You cannot get registered by the same email twice. You should enter the age by numbers and
           the phone number should be a number with 10 characters and the password length should be

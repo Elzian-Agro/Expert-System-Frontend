@@ -1,16 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 
+// Image component
+import Img from "../Img";
+// images
 import Screen1 from "../../../assets/images/My schedule 1.png";
 import Screen2 from "../../../assets/images/My schedule 2.png";
-
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  width: "100%",
-});
 
 function MySchedule() {
   return (
@@ -30,11 +26,7 @@ function MySchedule() {
           can see booked schedules in Dashboard named as meeting links.
         </Typography>
         <br />
-        <Img
-          alt="screenshot of My Schedule user documentation"
-          // setting a default image if profile image is null
-          src={Screen1}
-        />
+        <Img alt="screenshot of My Schedule user documentation" src={Screen1} />
         <br />
         <br />
         <Typography variant="h3" gutterBottom>
@@ -46,11 +38,7 @@ function MySchedule() {
           links in dashboard. If you don’t have any booked schedule you will get alert message.
         </Typography>
         <br />
-        <Img
-          alt="screenshot of My Schedule user documentation"
-          // setting a default image if profile image is null
-          src={Screen2}
-        />
+        <Img alt="screenshot of My Schedule user documentation" src={Screen2} />
       </Box>
     </>
   );

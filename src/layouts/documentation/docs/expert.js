@@ -1,15 +1,12 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 
+// Image component
+import Img from "../Img";
+// images
 import mainExpert from "../../../assets/images/expert-main.png";
 import navigateExpert from "../../../assets/images/navigate-expert.png";
 
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  borderRadius: "50%",
-});
 function Expert() {
   return (
     <div>
@@ -25,11 +22,7 @@ function Expert() {
           position of the expert and the organization the expert works in. Users can get relevant
           information regarding their problems by contacting the experts.
         </Typography>
-        <Img
-          alt="screenshot of expert user documentation"
-          // setting a default image if profile image is null
-          src={mainExpert}
-        />
+        <Img alt="screenshot of expert user documentation" src={mainExpert} />
         <Typography variant="h2" gutterBottom mt={7}>
           How to navigate to experts page
         </Typography>
@@ -41,11 +34,7 @@ function Expert() {
           the experts option. When the user clicks on the experts option then the user will be
           navigated to the Experts Page which you can see in the figure 1
         </Typography>
-        <Img
-          alt="screenshot of expert user documentation"
-          // setting a default image if profile image is null
-          src={navigateExpert}
-        />
+        <Img alt="screenshot of expert user documentation" src={navigateExpert} />
       </Box>
     </div>
   );
