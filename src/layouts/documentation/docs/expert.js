@@ -8,9 +8,8 @@ import navigateExpert from "../../../assets/images/navigate-expert.png";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
-  width: "100%",
+  borderRadius: "50%",
 });
-
 function Expert() {
   return (
     <div>
