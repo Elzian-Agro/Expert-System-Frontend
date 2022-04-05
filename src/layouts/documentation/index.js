@@ -8,6 +8,9 @@ import Dashboard from "./docs/dashboard";
 import Configurator from "./docs/configurator";
 import Contact from "./docs/contact";
 import Expert from "./docs/expert";
+import MySchedule from "./docs/mySchedule";
+import CreateSchedule from "./docs/createSchedule";
+import OverallSchedule from "./docs/overallSchedule";
 
 function Documentation() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -18,6 +21,9 @@ function Documentation() {
     { id: 1, label: "Contact", component: <Contact /> },
     { id: 2, label: "Configurator", component: <Configurator /> },
     { id: 3, label: "Expert", component: <Expert /> },
+    { id: 4, label: "My Schedule", component: <MySchedule /> },
+    { id: 5, label: "Overall Schedule", component: <OverallSchedule /> },
+    { id: 6, label: "Create Schedule", component: <CreateSchedule /> },
   ];
 
   return (
