@@ -11,6 +11,8 @@ import Expert from "./docs/expert";
 import MySchedule from "./docs/mySchedule";
 import CreateSchedule from "./docs/createSchedule";
 import OverallSchedule from "./docs/overallSchedule";
+import ExpertRegister from "./docs/expert-sign-in";
+import FarmerRegister from "./docs/farmer-sign-in";
 
 function Documentation() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -24,6 +26,8 @@ function Documentation() {
     { id: 4, label: "My Schedule", component: <MySchedule /> },
     { id: 5, label: "Overall Schedule", component: <OverallSchedule /> },
     { id: 6, label: "Create Schedule", component: <CreateSchedule /> },
+    { id: 7, label: "Expert-Register", component: <ExpertRegister /> },
+    { id: 8, label: "Farmer-Register", component: <FarmerRegister /> },
   ];
 
   return (
