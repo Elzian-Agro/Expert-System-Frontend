@@ -2,6 +2,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
+import mainExpert from "../../../assets/images/expert-main.png";
+import navigateExpert from "../../../assets/images/navigate-expert.png";
+
 const Img = styled("img")({
   margin: "auto",
   display: "block",
@@ -11,7 +14,7 @@ const Img = styled("img")({
 function Expert() {
   return (
     <div>
-      <Box sx={{ width: "100%", maxWidth: 500 }}>
+      <Box>
         <Typography variant="h1" component="div" gutterBottom>
           Expert
         </Typography>
@@ -26,11 +29,9 @@ function Expert() {
         <Img
           alt="screenshot of expert user documentation"
           // setting a default image if profile image is null
-          src="../../assets/images/navigate-expert.png"
+          src={mainExpert}
         />
-      </Box>
-      <Box sx={{ width: "100%", maxWidth: 500 }}>
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h2" gutterBottom mt={7}>
           How to navigate to experts page
         </Typography>
         <Typography variant="body2" gutterBottom>
@@ -44,7 +45,7 @@ function Expert() {
         <Img
           alt="screenshot of expert user documentation"
           // setting a default image if profile image is null
-          src="../../assets/images/navigate-expert.png"
+          src={navigateExpert}
         />
       </Box>
     </div>
