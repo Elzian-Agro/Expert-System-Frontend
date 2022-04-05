@@ -1,5 +1,13 @@
+import MDTypography from "components/MDTypography";
+
 function Contact() {
-  return <h1>contact</h1>;
+  return (
+    <>
+      <MDTypography variant="h2" gutterBottom>
+        Contact
+      </MDTypography>
+    </>
+  );
 }
 
 export default Contact;

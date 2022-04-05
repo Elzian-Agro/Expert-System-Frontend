@@ -5,9 +5,8 @@ import { styled } from "@mui/material/styles";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
-  width: "100%",
+  borderRadius: "50%",
 });
-
 function Expert() {
   return (
     <div>
@@ -26,7 +25,7 @@ function Expert() {
         <Img
           alt="screenshot of expert user documentation"
           // setting a default image if profile image is null
-          src="../../assets/images/navigate-expert.png"
+          src="../../../assets/images/navigate-expert.png"
         />
       </Box>
       <Box sx={{ width: "100%", maxWidth: 500 }}>
@@ -44,7 +43,7 @@ function Expert() {
         <Img
           alt="screenshot of expert user documentation"
           // setting a default image if profile image is null
-          src="../../assets/images/navigate-expert.png"
+          src="../../../assets/images/navigate-expert.png"
         />
       </Box>
     </div>

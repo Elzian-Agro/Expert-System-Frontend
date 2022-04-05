@@ -1,5 +1,39 @@
+import MDTypography from "components/MDTypography";
+
 function Dashboard() {
-  return <h1>dashboard</h1>;
+  return (
+    <>
+      <MDTypography variant="h2" gutterBottom>
+        Dashboard
+      </MDTypography>
+      <div>
+        <MDTypography variant="h4" gutterBottom>
+          How to navigate to the Dashboard page
+        </MDTypography>
+        <MDTypography variant="body2" gutterBottom>
+          Initially when a user log-in to the system he will automatically navigate to the
+          Dashboard. Then the user can see a side navigation bar at the left corner of the page.
+          Then there are many options such as Dashboard, My schedule, Create schedule, Overall
+          schedule, Experts, Contact-Us, Profile and About us. So, the user can go to the Dashboard
+          page by clicking the Dashboard option.
+        </MDTypography>
+      </div>
+      <div>
+        <MDTypography variant="h4" gutterBottom>
+          Dashboard page
+        </MDTypography>
+        <MDTypography variant="body2" gutterBottom>
+          Some of the experts are displaying in the Dashboard with their details.
+        </MDTypography>
+        {/* image */}
+        <MDTypography variant="body2" gutterBottom>
+          Some of the booked meetings are available on the Dashboard page with meeting details and
+          meeting link
+        </MDTypography>
+        {/* image */}
+      </div>
+    </>
+  );
 }
 
 export default Dashboard;
