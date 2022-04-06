@@ -22,7 +22,7 @@ function Documentation() {
   // doc pages
   const pages = [
     { id: 0, label: "Dashboard", component: <Dashboard /> },
-    { id: 1, label: "Contact", component: <Contact /> },
+    { id: 1, label: "Contact Us", component: <Contact /> },
     { id: 2, label: "Configurator", component: <Configurator /> },
     { id: 3, label: "Expert", component: <Expert /> },
     { id: 4, label: "My Schedule", component: <MySchedule /> },

@@ -1,16 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 
+// Image component
+import Img from "../Img";
+// images
 import Screen1 from "../../../assets/images/Create schedule 1.png";
 import Screen2 from "../../../assets/images/Create schedule 2.png";
-
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  width: "100%",
-});
 
 function CreateSchedule() {
   return (
@@ -28,11 +24,7 @@ function CreateSchedule() {
           you will navigate to Create Schedule page.
         </Typography>
         <br />
-        <Img
-          alt="screenshot of My Schedule user documentation"
-          // setting a default image if profile image is null
-          src={Screen1}
-        />
+        <Img alt="screenshot of My Schedule user documentation" src={Screen1} />
         <br />
         <br />
         <Typography variant="h3" gutterBottom>
@@ -61,11 +53,7 @@ function CreateSchedule() {
           VII. Clear Button – If you don’t want to create schedule you can simply click Clear Button
           to cancel schedule.
         </Typography>
-        <Img
-          alt="screenshot of My Schedule user documentation"
-          // setting a default image if profile image is null
-          src={Screen2}
-        />
+        <Img alt="screenshot of My Schedule user documentation" src={Screen2} />
       </Box>
     </>
   );

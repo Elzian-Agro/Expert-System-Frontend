@@ -1,16 +1,13 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 
+// Image component
+import Img from "../Img";
+// images
 import Screen1 from "../../../assets/images/Overall schedule1.png";
 import Screen2 from "../../../assets/images/Overall schedule 2.png";
 
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  width: "100%",
-});
 function OverallSchedule() {
   return (
     <>
@@ -29,11 +26,7 @@ function OverallSchedule() {
         </Typography>
         <br />
 
-        <Img
-          alt="screenshot of My Schedule user documentation"
-          // setting a default image if profile image is null
-          src={Screen1}
-        />
+        <Img alt="screenshot of My Schedule user documentation" src={Screen1} />
         <br />
         <br />
 
@@ -44,11 +37,7 @@ function OverallSchedule() {
           You can see many schedule cards here. If you book the schedule it will appear in My
           Schedule page and that will disappear in Overall Schedule.
         </Typography>
-        <Img
-          alt="screenshot of My Schedule user documentation"
-          // setting a default image if profile image is null
-          src={Screen2}
-        />
+        <Img alt="screenshot of My Schedule user documentation" src={Screen2} />
       </Box>
     </>
   );
