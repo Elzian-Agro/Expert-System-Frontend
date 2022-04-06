@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 
 import mainExpert1 from "../../../assets/images/sign up expert1.png";
 import mainExpert2 from "../../../assets/images/sign up expert2.png";
+import mainExpert3 from "../../../assets/images/sign in expert2.png";
 
 const Img = styled("img")({
   margin: "auto",
@@ -46,9 +47,14 @@ function Expert() {
           successfully.
         </Typography>
         <Typography variant="body2" gutterBottom mt={2}>
-          If you are already a registered expert, then you can click on the sign-in in the bottom of
+          If you are already a registered expert, then you can click on the sign In in the bottom of
           the page to navigate to the sign in page.
         </Typography>
+        <Img
+          alt="screenshot of expert user documentation"
+          // setting a default image if profile image is null
+          src={mainExpert3}
+        />
       </Box>
     </div>
   );
