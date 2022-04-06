@@ -8,6 +8,7 @@ import Dashboard from "./docs/dashboard";
 import Configurator from "./docs/configurator";
 import Contact from "./docs/contact";
 import Expert from "./docs/expert";
+import Profile from "./docs/profile";
 import MySchedule from "./docs/mySchedule";
 import CreateSchedule from "./docs/createSchedule";
 import OverallSchedule from "./docs/overallSchedule";
@@ -20,14 +21,15 @@ function Documentation() {
   // doc pages
   const pages = [
     { id: 0, label: "Dashboard", component: <Dashboard /> },
-    { id: 1, label: "Contact", component: <Contact /> },
+    { id: 1, label: "Contact Us", component: <Contact /> },
     { id: 2, label: "Configurator", component: <Configurator /> },
     { id: 3, label: "Expert", component: <Expert /> },
-    { id: 4, label: "My Schedule", component: <MySchedule /> },
-    { id: 5, label: "Overall Schedule", component: <OverallSchedule /> },
-    { id: 6, label: "Create Schedule", component: <CreateSchedule /> },
-    { id: 7, label: "Expert-Register", component: <ExpertRegister /> },
-    { id: 8, label: "Farmer-Register", component: <FarmerRegister /> },
+    { id: 4, label: "Profile", component: <Profile /> },
+    { id: 5, label: "My Schedule", component: <MySchedule /> },
+    { id: 6, label: "Overall Schedule", component: <OverallSchedule /> },
+    { id: 7, label: "Create Schedule", component: <CreateSchedule /> },
+    { id: 8, label: "Expert-Register", component: <ExpertRegister /> },
+    { id: 9, label: "Farmer-Register", component: <FarmerRegister /> },
   ];
 
   return (
