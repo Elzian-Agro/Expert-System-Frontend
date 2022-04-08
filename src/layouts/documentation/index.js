@@ -22,16 +22,16 @@ function Documentation() {
   // doc pages
   const pages = [
     { id: 0, label: "Dashboard", component: <Dashboard /> },
-    { id: 1, label: "Contact Us", component: <Contact /> },
-    { id: 2, label: "Configurator", component: <Configurator /> },
-    { id: 3, label: "Expert", component: <Expert /> },
-    { id: 4, label: "My Schedule", component: <MySchedule /> },
-    { id: 5, label: "Overall Schedule", component: <OverallSchedule /> },
-    { id: 6, label: "Create Schedule", component: <CreateSchedule /> },
+    { id: 1, label: "My Schedule", component: <MySchedule /> },
+    { id: 2, label: "Overall Schedule", component: <OverallSchedule /> },
+    { id: 3, label: "Create Schedule", component: <CreateSchedule /> },
+    { id: 4, label: "Expert", component: <Expert /> },
+    { id: 5, label: "Contact Us", component: <Contact /> },
+    { id: 6, label: "About Us", component: <AboutUs /> },
     { id: 7, label: "Expert Register", component: <ExpertRegister /> },
     { id: 8, label: "Farmer Register", component: <FarmerRegister /> },
     { id: 9, label: "User Login", component: <UserLogin /> },
-    { id: 10, label: "About Us", component: <AboutUs /> },
+    { id: 10, label: "Configurator", component: <Configurator /> },
   ];
 
   return (
