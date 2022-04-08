@@ -1,4 +1,9 @@
 import MDTypography from "components/MDTypography";
+// Image component
+import Img from "../Img";
+// images
+import dashboard1 from "../../../assets/images/docs/dashboard/dashboard_1.png";
+import dashboard2 from "../../../assets/images/docs/dashboard/dashboard_2.png";
 
 function Dashboard() {
   return (
@@ -25,12 +30,12 @@ function Dashboard() {
         <MDTypography variant="body2" gutterBottom>
           Some of the experts are displaying in the Dashboard with their details.
         </MDTypography>
-        {/* image */}
-        <MDTypography variant="body2" gutterBottom>
+        <Img alt="screenshots of dashboard doc" src={dashboard1} />
+        <MDTypography variant="body2" gutterBottom mt={3}>
           Some of the booked meetings are available on the Dashboard page with meeting details and
           meeting link
         </MDTypography>
-        {/* image */}
+        <Img alt="screenshots of dashboard doc" src={dashboard2} />
       </div>
     </>
   );
