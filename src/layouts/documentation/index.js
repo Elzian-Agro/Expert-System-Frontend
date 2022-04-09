@@ -15,6 +15,7 @@ import ExpertRegister from "./docs/expert-sign-in";
 import FarmerRegister from "./docs/farmer-sign-in";
 import UserLogin from "./docs/user-login";
 import AboutUs from "./docs/about-us";
+import Profile from "./docs/profile";
 
 function Documentation() {
   const [pageIndex, setPageIndex] = useState(0);
@@ -27,11 +28,12 @@ function Documentation() {
     { id: 3, label: "Create Schedule", component: <CreateSchedule /> },
     { id: 4, label: "Expert", component: <Expert /> },
     { id: 5, label: "Contact Us", component: <Contact /> },
-    { id: 6, label: "About Us", component: <AboutUs /> },
-    { id: 7, label: "Expert Register", component: <ExpertRegister /> },
-    { id: 8, label: "Farmer Register", component: <FarmerRegister /> },
-    { id: 9, label: "User Login", component: <UserLogin /> },
-    { id: 10, label: "Configurator", component: <Configurator /> },
+    { id: 6, label: "Profile", component: <Profile /> },
+    { id: 7, label: "About Us", component: <AboutUs /> },
+    { id: 8, label: "Expert Register", component: <ExpertRegister /> },
+    { id: 9, label: "Farmer Register", component: <FarmerRegister /> },
+    { id: 10, label: "User Login", component: <UserLogin /> },
+    { id: 11, label: "Configurator", component: <Configurator /> },
   ];
 
   return (
