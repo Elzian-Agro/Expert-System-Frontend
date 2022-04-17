@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
+import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 
 // @material-ui core components
 import AppBar from "@mui/material/AppBar";
@@ -43,7 +45,7 @@ import {
 import MDInput from "components/MDInput";
 import MDBox from "components/MDBox";
 
-import Logo from "assets/images/ivana-square.jpg";
+// import Logo from "assets/images/ivana-square.jpg";
 import { useAuth } from "../../../auth-context";
 
 function DashboardNavbar({ absolute, light, isMini }) {
@@ -54,8 +56,33 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const [openProfile, setOpenProfile] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
   const { logout } = useAuth();
+  const [cookie] = useCookies(["token"]);
+  const [usercookie] = useCookies(["user"]);
+  const [userFirstName, setName] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
-  useEffect(() => {
+  useEffect(async () => {
+    /* eslint no-underscore-dangle: 0 */
+    const url = `${process.env.REACT_APP_AUTH_BACKEND}/user/get/${usercookie.user._id}`;
+    const headers = {
+      "X-Auth-Token": cookie.token,
+      "content-type": "application/json",
+    };
+    try {
+      await fetch(url, { headers })
+        .then((response) => response.json())
+        .then((data) => {
+          setName(data.user.userFirstName);
+          setImgUrl(data.user.imageUri);
+        })
+
+        .catch((err) => {
+          toast.error(err);
+        });
+    } catch (err) {
+      toast.error(err);
+    }
+
     // Setting the navbar type
     if (fixedNavbar) {
       setNavbarType("sticky");
@@ -152,7 +179,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
       sx={{ mt: 2 }}
     >
       <MenuItem>
-        <Avatar src={Logo} /> Ivana square
+        <Avatar src={imgUrl} /> {userFirstName}
       </MenuItem>
       <Divider />
       <MenuItem

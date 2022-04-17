@@ -18,9 +18,6 @@ function AboutDoc() {
         <Typography variant="h2" component="div" gutterBottom>
           About Us
         </Typography>
-        <Typography variant="h4" gutterBottom>
-          How to login to the website?
-        </Typography>
         <Typography variant="body2" gutterBottom mt={4}>
           This is the page from where you can get details about the system. After logging into the
           system, you can select the about us option from the side nav to see the company about. And

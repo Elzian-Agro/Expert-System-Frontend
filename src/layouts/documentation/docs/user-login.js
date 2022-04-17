@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
 import mainExpert1 from "../../../assets/images/user sign in.png";
+import mainExpert2 from "../../../assets/images/nianalogout.png";
 
 const Img = styled("img")({
   margin: "auto",
@@ -36,6 +37,20 @@ function LoginDoc() {
           according to your type. If you want to register as an expert user, you can click on expert
           in the bottom of the sign in page to sign up to the system and if you want to register to
           the system as a farmer, you can click on farmer.
+        </Typography>
+        <Typography variant="h4" gutterBottom mt={4}>
+          How to logout from the website?
+        </Typography>
+        <Img
+          alt="screenshot of expert user documentation"
+          // setting a default image if profile image is null
+          src={mainExpert2}
+        />
+        <Typography variant="body2" gutterBottom mt={4}>
+          When you logged in to the system, you can see a nav bar having a serach bar and some other
+          clickable optons. There, after clicking on the profile icon, you can view the screen like
+          above with the profile picture and the name related to you. You can simply click on the
+          logout option and get logged out from the system.
         </Typography>
       </Box>
     </div>
