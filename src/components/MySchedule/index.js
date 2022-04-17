@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import MyScheduleCard from "./scheduleOne";
 import MDBox from "../MDBox";
+import MySchedulePopup from "./MySchedulePopup";
 
 // MySchedule function
 const MySchedule = () => {
@@ -22,45 +23,46 @@ const MySchedule = () => {
   };
   // Intergrate with Backend
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_EXPERT_BACKEND}/schedule/booked`)
-      .then((response) => setSchedules(response.data));
+    axios.get(`${process.env.REACT_APP_EXPERT_BACKEND}/schedule/booked`).then((response) => {
+      setSchedules(response.data);
+    });
   }, []);
 
-  if (useState([])) {
-    return <div>There are no booked schedules</div>;
-  }
   return (
     <>
-      <MDBox py={3}>
-        <Grid container spacing={2}>
-          {schedules.map(
-            (schedule, index) =>
-              index < count && (
-                /* eslint no-underscore-dangle: 0 */
-                <Grid key={schedule._id} item xs={12} lg={6}>
-                  <MyScheduleCard
-                    details={schedule.Description}
-                    profileImg={schedule.ExpertProfile}
-                    title={schedule.MeetingTitle}
-                    time={schedule.Time}
-                    date={schedule.Date}
-                    name={schedule.ExpertName}
-                    MeetingLink={schedule.MeetingLink}
-                  />
-                </Grid>
-              )
-          )}
-        </Grid>
+      {schedules.length !== 0 ? (
+        <MDBox py={3}>
+          <Grid container spacing={2}>
+            {schedules.map(
+              (schedule, index) =>
+                index < count && (
+                  /* eslint no-underscore-dangle: 0 */
+                  <Grid key={schedule._id} item xs={12} lg={6}>
+                    <MyScheduleCard
+                      details={schedule.Description}
+                      profileImg={schedule.ExpertProfile}
+                      title={schedule.MeetingTitle}
+                      time={schedule.Time}
+                      date={schedule.Date}
+                      name={schedule.ExpertName}
+                      MeetingLink={schedule.MeetingLink}
+                    />
+                  </Grid>
+                )
+            )}
+          </Grid>
 
-        <Grid align="center">
-          {count < schedules.length && (
-            <Button type="submit" onClick={show} color="primary">
-              show more
-            </Button>
-          )}
-        </Grid>
-      </MDBox>
+          <Grid align="center">
+            {count < schedules.length && (
+              <Button type="submit" onClick={show} color="primary">
+                show more
+              </Button>
+            )}
+          </Grid>
+        </MDBox>
+      ) : (
+        <MySchedulePopup />
+      )}
     </>
   );
 };
