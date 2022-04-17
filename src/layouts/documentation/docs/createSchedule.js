@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import MDTypography from "components/MDTypography";
 
 // Image component
 import Img from "../Img";
@@ -16,21 +17,21 @@ function CreateSchedule() {
           Create Schedule
         </Typography>
         <Typography variant="h3" gutterBottom>
-          1.Navigate to Create Schedule Page
+          Navigate to Create Schedule Page
         </Typography>
-        <Typography variant="body2" gutterBottom>
+        <MDTypography variant="body2" gutterBottom>
           If you are log in you will automatically navigate to Dashboard. Then you can see the side
           navigation bar at the left corner of the page. You can click Create Schedule button and
           you will navigate to Create Schedule page.
-        </Typography>
+        </MDTypography>
         <br />
         <Img alt="screenshot of My Schedule user documentation" src={Screen1} />
         <br />
         <br />
         <Typography variant="h3" gutterBottom>
-          2.Use Create Schedule Page
+          Use Create Schedule Page
         </Typography>
-        <Typography variant="body2" gutterBottom>
+        <MDTypography variant="body2" gutterBottom>
           Here you can see Meeting Name, Meeting Link and Description as input fields. In the bottom
           you can see Date, Time, Clear Button and Save Button.
           <br />
@@ -52,7 +53,7 @@ function CreateSchedule() {
           <br />
           VII. Clear Button – If you don’t want to create schedule you can simply click Clear Button
           to cancel schedule.
-        </Typography>
+        </MDTypography>
         <Img alt="screenshot of My Schedule user documentation" src={Screen2} />
       </Box>
     </>

@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import MDTypography from "components/MDTypography";
 import Typography from "@mui/material/Typography";
 
 // Image component
@@ -16,27 +17,27 @@ function MySchedule() {
           My Schedule
         </Typography>
         <Typography variant="h3" gutterBottom>
-          1.Navigate to My Schedule page
+          Navigate to My Schedule page
         </Typography>
-        <Typography variant="body2" gutterBottom>
+        <MDTypography variant="body2" gutterBottom>
           If you are log in you will automatically navigate to Dashboard. Then you can see the side
           navigation bar at the left corner of the page. Then you can see many options such as My
           schedule, Create schedule, Overall schedule, Experts, Contact-Us, Profile and About us.
           You can click My Schedule button and you will navigate to My Schedule page. And also you
           can see booked schedules in Dashboard named as meeting links.
-        </Typography>
+        </MDTypography>
         <br />
         <Img alt="screenshot of My Schedule user documentation" src={Screen1} />
         <br />
         <br />
         <Typography variant="h3" gutterBottom>
-          2.Use My Schedule Page
+          Use My Schedule Page
         </Typography>
-        <Typography variant="body2" gutterBottom>
+        <MDTypography variant="body2" gutterBottom>
           If you navigate to My Schedule page you can see booked schedules in your page. You can use
           the meeting link to join the meeting on allocated time. And also you can find the meeting
           links in dashboard. If you don’t have any booked schedule you will get alert message.
-        </Typography>
+        </MDTypography>
         <br />
         <Img alt="screenshot of My Schedule user documentation" src={Screen2} />
       </Box>

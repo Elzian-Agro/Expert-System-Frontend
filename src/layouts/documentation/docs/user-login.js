@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import MDTypography from "components/MDTypography";
 import { styled } from "@mui/material/styles";
 
 import mainExpert1 from "../../../assets/images/user sign in.png";
@@ -26,7 +27,7 @@ function LoginDoc() {
           // setting a default image if profile image is null
           src={mainExpert1}
         />
-        <Typography variant="body2" gutterBottom mt={4}>
+        <MDTypography variant="body2" gutterBottom mt={4}>
           This is the sign in page which is common for both expert and the farmer to sign in to the
           system. This is the first page a you can see before entering to the system. You have to
           enter the correct credentials for a successful log in or else you can use the Google,
@@ -37,7 +38,7 @@ function LoginDoc() {
           according to your type. If you want to register as an expert user, you can click on expert
           in the bottom of the sign in page to sign up to the system and if you want to register to
           the system as a farmer, you can click on farmer.
-        </Typography>
+        </MDTypography>
         <Typography variant="h4" gutterBottom mt={4}>
           How to logout from the website?
         </Typography>
