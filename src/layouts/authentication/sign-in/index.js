@@ -82,7 +82,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="http://localhost:3002/auth/google"
+                href="https://elzian-agro-user-auth.herokuapp.com/auth/google"
                 variant="body1"
                 color="white"
               >
@@ -92,7 +92,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="http://localhost:3002/auth/microsoft"
+                href="https://elzian-agro-user-auth.herokuapp.com/auth/microsoft"
                 variant="body1"
                 color="white"
               >
@@ -102,7 +102,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="http://localhost:3002/auth/facebook"
+                href="https://elzian-agro-user-auth.herokuapp.com/auth/facebook"
                 variant="body1"
                 color="white"
               >
@@ -112,7 +112,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="http://localhost:3002/auth/linkedin"
+                href="https://elzian-agro-user-auth.herokuapp.com/auth/linkedin"
                 variant="body1"
                 color="white"
               >
