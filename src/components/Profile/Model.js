@@ -32,18 +32,6 @@ const SmallAvatar = withStyles(() => ({
   },
 }))(Avatar);
 
-// const style = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 400,
-//   bgcolor: "background.paper",
-//   border: "2px solid #000",
-//   boxShadow: 2,
-//   p: 4,
-// };
-
 export function TransitionsModal(props) {
   const { user, setImgUrl } = props;
   const [open, setOpen] = React.useState(false);
@@ -143,7 +131,7 @@ export function ValidationTextFields(props) {
       <TextField
         id="outlined"
         label="Last Name"
-        // defaultValue=""
+        defaultValue=""
         value={lastname}
         onChange={(e) => setLastname(e.target.value)}
         required
