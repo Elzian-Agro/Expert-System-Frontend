@@ -69,7 +69,7 @@ export function TransitionsModal(props) {
             }}
           >
             <CardContent>
-              <Typography id="transition-modal-title" variant="h6" component="h2">
+              <Typography id="transition-modal-title" variant="h6" component="h2" paddingTop="25px">
                 Fill the form
               </Typography>
               <br />
