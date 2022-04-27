@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // @mui material UI components
 import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
@@ -21,6 +21,9 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import Icon from "@mui/material/Icon";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import MDBox from "../MDBox";
 
 const SmallAvatar = withStyles(() => ({
   root: {
@@ -29,17 +32,17 @@ const SmallAvatar = withStyles(() => ({
   },
 }))(Avatar);
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 2,
+//   p: 4,
+// };
 
 export function TransitionsModal(props) {
   const { user, setImgUrl } = props;
@@ -67,13 +70,24 @@ export function TransitionsModal(props) {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Fill the form
-            </Typography>
-
-            <ValidationTextFields user={user} setImgUrl={setImgUrl} />
-          </Box>
+          <Card
+            style={{
+              maxWidth: 400,
+              display: "flex",
+              position: "absolute",
+              top: "51%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <CardContent>
+              <Typography id="transition-modal-title" variant="h6" component="h2">
+                Fill the form
+              </Typography>
+              <br />
+              <ValidationTextFields user={user} setImgUrl={setImgUrl} />
+            </CardContent>
+          </Card>
         </Fade>
       </Modal>
     </div>
@@ -110,7 +124,7 @@ export function ValidationTextFields(props) {
     setBio(user2.userBio);
   };
   return (
-    <Box
+    <MDBox
       component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
@@ -120,17 +134,17 @@ export function ValidationTextFields(props) {
     >
       <TextField
         id="outlined"
+        label="First Name"
         defaultValue=""
         value={firstname}
-        helperText="Eg: alex "
         onChange={(e) => setFirstname(e.target.value)}
         required
       />
       <TextField
         id="outlined"
-        defaultValue=""
+        label="Last Name"
+        // defaultValue=""
         value={lastname}
-        helperText="Eg:  mark"
         onChange={(e) => setLastname(e.target.value)}
         required
       />
@@ -139,7 +153,6 @@ export function ValidationTextFields(props) {
         label="Mobile Number"
         defaultValue=""
         value={phone}
-        helperText="+94 7xx-xxx-xxx"
         onChange={(e) => setPhone(e.target.value)}
         required
       />
@@ -148,16 +161,15 @@ export function ValidationTextFields(props) {
         label="Location"
         defaultValue=""
         value={address}
-        helperText="Eg: Colombo"
         onChange={(e) => setAdress(e.target.value)}
         required
       />
       <TextField
+        variant="outlined"
         id="outlined-error-helper-text"
         label="bio"
         defaultValue=""
         value={bio}
-        helperText="Eg: I am..."
         onChange={(e) => setBio(e.target.value)}
         required
       />
@@ -168,7 +180,6 @@ export function ValidationTextFields(props) {
               label="Qualification"
               defaultValue=""
               value={qualification}
-              helperText="Eg: MSc in Agricultuture"
               onChange={(e) => setQualification(e.target.value)}
               required
             />,
@@ -177,14 +188,13 @@ export function ValidationTextFields(props) {
               label="Institute"
               defaultValue=""
               value={institutework}
-              helperText="Eg: Elzian Agro"
               onChange={(e) => setInstitutework(e.target.value)}
               required
             />,
           ]
         : null}
       <UploadButtons user={user1} onReset={handleSet} setImgUrl={setImgUrl} />
-    </Box>
+    </MDBox>
   );
 }
 
@@ -338,6 +348,7 @@ export function UploadButtons(props) {
             color="success"
             variant="contained"
             startIcon={<RestartAltIcon />}
+            sx={{ color: "#36483F" }}
             onClick={() => handleReset()}
           >
             Reset
