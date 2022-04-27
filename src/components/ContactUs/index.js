@@ -10,6 +10,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { IconButton } from "@mui/material";
 
 import { Phone, LocationOn, PublicSharp, EmailRounded } from "@mui/icons-material";
 
@@ -138,10 +139,12 @@ function ContactUs() {
               <Grid container rowSpacing={2}>
                 <Grid xs={12} item container>
                   <Grid item xs={2}>
-                    <LocationOn />
+                    <IconButton color="text">
+                      <LocationOn />
+                    </IconButton>
                   </Grid>
-                  <Grid item xs={10}>
-                    <Typography variant="body2">
+                  <Grid item xs={10} mt={1}>
+                    <Typography variant="h6" fontWeight="regular">
                       Elzian Ago (pvt) Ltd,
                       <br />
                       New Shopping Complex,
@@ -156,20 +159,24 @@ function ContactUs() {
                 </Grid>
                 <Grid xs={12} item container>
                   <Grid item xs={2}>
-                    <Phone />
+                    <IconButton color="text">
+                      <Phone />
+                    </IconButton>
                   </Grid>
-                  <Grid item xs={10}>
-                    <Typography variant="body2">
+                  <Grid item xs={10} mt={1}>
+                    <Typography variant="h6" fontWeight="regular">
                       <a href="tel:+94768937675">(+94) 76 893 7675</a>
                     </Typography>
                   </Grid>
                 </Grid>
                 <Grid xs={12} item container>
                   <Grid item xs={2}>
-                    <EmailRounded />
+                    <IconButton color="text">
+                      <EmailRounded />
+                    </IconButton>
                   </Grid>
-                  <Grid item xs={10}>
-                    <Typography variant="body2">
+                  <Grid item xs={10} mt={1}>
+                    <Typography variant="h6" fontWeight="regular">
                       <a href="mailto:contact@elzian.com?subject=Experts%20Query">
                         contact@elzian.com
                       </a>
@@ -178,10 +185,12 @@ function ContactUs() {
                 </Grid>
                 <Grid xs={12} item container>
                   <Grid item xs={2}>
-                    <PublicSharp />
+                    <IconButton color="text">
+                      <PublicSharp />
+                    </IconButton>
                   </Grid>
-                  <Grid item xs={10}>
-                    <Typography variant="body2">
+                  <Grid item xs={10} mt={1}>
+                    <Typography variant="h6" fontWeight="regular">
                       <a href="https://agro.elzian.com" target="_blank" rel="noopener noreferrer">
                         www.agro.elzian.com
                       </a>

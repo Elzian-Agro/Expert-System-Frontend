@@ -49,7 +49,7 @@ function ScheduleCard(props) {
                 {title}
               </Typography>
               <MDTypography color="text" fontWeight="light">
-                <AccountBox color="black" sx={{ mx: 1 }} />
+                <AccountBox color="text" sx={{ mx: 1 }} />
                 {name}
               </MDTypography>
               <MDTypography variant="button" color="text" fontWeight="light">
@@ -58,13 +58,13 @@ function ScheduleCard(props) {
               <Grid item xs container>
                 <Grid item xs={7}>
                   <MDTypography color="text" fontWeight="light">
-                    <EventIcon color="black" sx={{ mx: 1 }} />
+                    <EventIcon color="text" sx={{ mx: 1 }} />
                     {date}
                   </MDTypography>
                 </Grid>
                 <Grid item xs={5}>
                   <MDTypography color="text" fontWeight="light">
-                    <AccessTimeIcon color="black" sx={{ mx: 1 }} />
+                    <AccessTimeIcon color="text" sx={{ mx: 1 }} />
                     {time}
                   </MDTypography>
                 </Grid>
