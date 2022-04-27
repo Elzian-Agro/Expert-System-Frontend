@@ -108,7 +108,7 @@ const AboutUs = () => (
               px: 2,
             }}
           >
-            <IconButton>
+            <IconButton color="text">
               <TrackChangesIcon />
             </IconButton>
             <MDTypography variant="h4" textAlign="center" fontWeight="medium" mt={1}>
@@ -139,7 +139,7 @@ const AboutUs = () => (
               px: 2,
             }}
           >
-            <IconButton>
+            <IconButton color="text">
               <RemoveRedEyeIcon />
             </IconButton>
             <MDTypography variant="h4" textAlign="center" fontWeight="medium" mt={1}>
