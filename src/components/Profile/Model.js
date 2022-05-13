@@ -240,7 +240,7 @@ export function UploadButtons(props) {
         .then((res) => {
           if (res.status === 200) {
             toast.success("success");
-            const url = "https://elzian-agro-user-auth.herokuapp.com/user/get/".concat(
+            const url = `${process.env.REACT_APP_AUTH_BACKEND}/user/get/`.concat(
               usercookie.user._id
             );
             const data1 = {

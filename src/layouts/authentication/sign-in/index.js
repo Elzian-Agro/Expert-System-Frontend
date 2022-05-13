@@ -32,6 +32,9 @@ import BasicLayout from "layouts/authentication/components/BasicLayout";
 import bgImage from "assets/images/photo-agri1.avif";
 import { useAuth } from "../../../auth-context";
 
+// authetication backend URL from env file
+const authBackend = process.env.REACT_APP_AUTH_BACKEND;
+
 function Basic() {
   // declare new state variables
   const [emailFocus, setEmailFocus] = useState(false);
@@ -82,7 +85,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="https://elzian-agro-user-auth.herokuapp.com/auth/google"
+                href={`${authBackend}/auth/google`}
                 variant="body1"
                 color="white"
               >
@@ -92,7 +95,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="https://elzian-agro-user-auth.herokuapp.com/auth/microsoft"
+                href={`${authBackend}/auth/microsoft`}
                 variant="body1"
                 color="white"
               >
@@ -102,7 +105,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="https://elzian-agro-user-auth.herokuapp.com/auth/facebook"
+                href={`${authBackend}/auth/facebook`}
                 variant="body1"
                 color="white"
               >
@@ -112,7 +115,7 @@ function Basic() {
             <Grid item xs={2}>
               <MDTypography
                 component={MuiLink}
-                href="https://elzian-agro-user-auth.herokuapp.com/auth/linkedin"
+                href={`${authBackend}/auth/linkedin`}
                 variant="body1"
                 color="white"
               >

@@ -66,7 +66,7 @@ function Cover() {
       .positive()
       .required("Phone number is required")
       // eslint-disable-next-line prettier/prettier
-      .test("len", "Must be exactly 10 numbers", val => val.toString().length === 9),
+      .test("len", "Must be exactly 10 numbers", (val) => val.toString().length === 9),
   });
   // formik declaration
   const formik = useFormik({
@@ -103,7 +103,7 @@ function Cover() {
       };
       // the backend connection
       axios
-        .post("https://elzian-agro-user-auth.herokuapp.com/user/add/expert", data)
+        .post(`${process.env.REACT_APP_AUTH_BACKEND}/user/add/expert`, data)
         .then(() => {
           toast.success("Expert Successfuly Registered");
           // user navigation after a successful registration
