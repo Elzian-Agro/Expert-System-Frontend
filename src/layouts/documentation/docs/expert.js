@@ -5,8 +5,8 @@ import MDTypography from "components/MDTypography";
 // Image component
 import Img from "../Img";
 // images
-import mainExpert from "../../../assets/images/expert-main.png";
-import navigateExpert from "../../../assets/images/navigate-expert.png";
+import mainExpert from "../../../assets/images/docs/expert/expert-main.png";
+import navigateExpert from "../../../assets/images/docs/expert/navigate-expert.png";
 
 function Expert() {
   return (

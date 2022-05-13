@@ -5,10 +5,10 @@ import MDTypography from "components/MDTypography";
 // Image component
 import Img from "../Img";
 // images
-import contactOverview from "../../../assets/images/contact overview.png";
-import navigateContactUs from "../../../assets/images/contactus-overview-navigate.jpg";
-import submitContact from "../../../assets/images/submit.jpg";
-import successcontact from "../../../assets/images/contact success.jpg";
+import contactOverview from "../../../assets/images/docs/contact/contact overview.png";
+import navigateContactUs from "../../../assets/images/docs/contact/contactus-overview-navigate.jpg";
+import submitContact from "../../../assets/images/docs/contact/submit.jpg";
+import successcontact from "../../../assets/images/docs/contact/contact success.jpg";
 
 function Expert() {
   return (

@@ -3,8 +3,8 @@ import Typography from "@mui/material/Typography";
 import MDTypography from "components/MDTypography";
 import { styled } from "@mui/material/styles";
 
-import mainExpert1 from "../../../assets/images/user sign in.png";
-import mainExpert2 from "../../../assets/images/nianalogout.png";
+import mainExpert1 from "../../../assets/images/docs/auth/user sign in.png";
+import mainExpert2 from "../../../assets/images/docs/auth/nianalogout.png";
 
 const Img = styled("img")({
   margin: "auto",
