@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+
+import { useMaterialUIController } from "context";
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -11,8 +14,22 @@ import MySchedulePopup from "./MySchedulePopup";
 
 // MySchedule function
 const MySchedule = () => {
+  const [controller] = useMaterialUIController();
+  const { searchKeyword } = controller;
   const [count, setCount] = useState(4);
   const [schedules, setSchedules] = useState([]);
+
+  useEffect(() => {
+    const keyword = searchKeyword.toLowerCase().trim();
+    setSchedules(
+      schedules.filter(
+        (schedule) =>
+          schedule.MeetingTitle.toLowerCase().includes(keyword) ||
+          schedule.ExpertName.toLowerCase().includes(keyword) ||
+          schedule.Description.toLowerCase().includes(keyword)
+      )
+    );
+  }, [searchKeyword]);
 
   const meetingValidate = () => {
     const current = new Date();
@@ -24,7 +41,6 @@ const MySchedule = () => {
       }
       return null;
     });
-    console.log(dates);
     if (todayDate < dates) {
       return (
         <Grid item>
