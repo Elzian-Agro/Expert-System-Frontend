@@ -16,8 +16,9 @@ const AllSchedule = () => {
   const { searchKeyword } = controller;
 
   const [cookies] = useCookies(["token"]);
-  const [schedules, setSchedules] = useState([]);
   const [cardCount, setCardCount] = useState(6);
+  const [schedules, setSchedules] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
 
   axios.defaults.headers = {
     "Content-Type": "application/json",
@@ -25,9 +26,10 @@ const AllSchedule = () => {
   };
 
   const getData = () => {
-    axios
-      .get(`${process.env.REACT_APP_EXPERT_BACKEND}/schedule`)
-      .then((response) => setSchedules(response.data));
+    axios.get(`${process.env.REACT_APP_EXPERT_BACKEND}/schedule`).then((response) => {
+      setSchedules(response.data);
+      setSearchResult(response.data);
+    });
   };
 
   useEffect(() => {
@@ -37,14 +39,16 @@ const AllSchedule = () => {
   // searching
   useEffect(() => {
     const keyword = searchKeyword.toLowerCase().trim();
-    setSchedules(
-      schedules.filter(
-        (schedule) =>
-          schedule.MeetingTitle.toLowerCase().includes(keyword) ||
-          schedule.ExpertName.toLowerCase().includes(keyword) ||
-          schedule.Description.toLowerCase().includes(keyword)
-      )
-    );
+    if (keyword !== "") {
+      setSearchResult(
+        schedules.filter(
+          (schedule) =>
+            schedule.MeetingTitle.toLowerCase().includes(keyword) ||
+            schedule.ExpertName.toLowerCase().includes(keyword) ||
+            schedule.Description.toLowerCase().includes(keyword)
+        )
+      );
+    }
   }, [searchKeyword]);
 
   const bookingSchedule = async (meetingID) => {
@@ -68,7 +72,7 @@ const AllSchedule = () => {
     <MDBox py={3}>
       <ToastContainer />
       <Grid container spacing={2}>
-        {schedules.map(
+        {searchResult.map(
           (schedule, index) =>
             index < cardCount && (
               /* eslint no-underscore-dangle: 0 */
