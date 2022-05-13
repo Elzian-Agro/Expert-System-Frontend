@@ -115,7 +115,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const handleOpenMenu = (event) => {
     setOpenMenu(event.currentTarget);
   };
-  // const handleSearchBar = (e) => setSearchKeyword(dispatch, e.target.value);
 
   const handleOpenProfile = (event) => {
     setOpenProfile(event.currentTarget);
