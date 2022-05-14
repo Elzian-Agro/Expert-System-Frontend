@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import MDButton from "components/MDButton";
 import { useMaterialUIController } from "context";
 import SuccessDialogBox from "./SuccessDialogBox";
+import "./button.css";
 
 const CraeteSchedule = ({ light }) => {
   const [meetingName, setMeetingName] = useState("");
@@ -39,14 +40,11 @@ const CraeteSchedule = ({ light }) => {
 
   const scheduleFormHandler = async (event) => {
     event.preventDefault();
-    const response = await axios.get(
-      "https://elzian-agro-user-auth.herokuapp.com/user/getAuthUser",
-      {
-        headers: {
-          "x-auth-token": cookies.token,
-        },
-      }
-    );
+    const response = await axios.get(`${process.env.REACT_APP_AUTH_BACKEND}/user/getAuthUser`, {
+      headers: {
+        "x-auth-token": cookies.token,
+      },
+    });
 
     const loggedUser = response.data;
     // const loggedUser = await localStorage.getItem("user");

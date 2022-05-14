@@ -5,9 +5,9 @@ import Typography from "@mui/material/Typography";
 // Image component
 import Img from "../Img";
 // images
-import mainExpert1 from "../../../assets/images/sign up expert1.png";
-import mainExpert2 from "../../../assets/images/sign up expert2.png";
-import mainExpert3 from "../../../assets/images/sign in expert2.png";
+import mainExpert1 from "../../../assets/images/docs/auth/sign up expert1.png";
+import mainExpert2 from "../../../assets/images/docs/auth/sign up expert2.png";
+import mainExpert3 from "../../../assets/images/docs/auth/sign in expert2.png";
 
 function Expert() {
   return (

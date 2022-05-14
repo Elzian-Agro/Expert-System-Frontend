@@ -5,13 +5,13 @@ import Typography from "@mui/material/Typography";
 // Image component
 import Img from "../Img";
 // images
-import profileOverview from "../../../assets/images/profile overview.png";
-import navigateProfile from "../../../assets/images/profile navigate.jpg";
-import editProfile from "../../../assets/images/edit profile.jpg";
-import saveDetail from "../../../assets/images/save detail.jpg";
-import resetDetail from "../../../assets/images/reset.jpg";
-import imageSave from "../../../assets/images/img save n upload.jpg";
-import successPhoto from "../../../assets/images/photo success.png";
+import profileOverview from "../../../assets/images/docs/profile/profile overview.png";
+import navigateProfile from "../../../assets/images/docs/profile/profile navigate.jpg";
+import editProfile from "../../../assets/images/docs/profile/edit profile.jpg";
+import saveDetail from "../../../assets/images/docs/profile/save detail.jpg";
+import resetDetail from "../../../assets/images/docs/profile/reset.jpg";
+import imageSave from "../../../assets/images/docs/profile/img save n upload.jpg";
+import successPhoto from "../../../assets/images/docs/profile/photo success.png";
 
 function Profile() {
   return (

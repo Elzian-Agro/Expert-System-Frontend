@@ -20,8 +20,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import Logout from "@mui/icons-material/Logout";
 
-// Material Dashboard 2 React components
-
 // Material Dashboard 2 React example components
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
@@ -41,6 +39,7 @@ import {
   setTransparentNavbar,
   setMiniSidenav,
   setOpenConfigurator,
+  setSearchKeyword,
 } from "context";
 import MDInput from "components/MDInput";
 import MDBox from "components/MDBox";
@@ -49,17 +48,20 @@ import MDBox from "components/MDBox";
 import { useAuth } from "../../../auth-context";
 
 function DashboardNavbar({ absolute, light, isMini }) {
-  const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator, darkMode } = controller;
+
+  const [navbarType, setNavbarType] = useState();
   const [openMenu, setOpenMenu] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
-  const route = useLocation().pathname.split("/").slice(1);
-  const { logout } = useAuth();
-  const [cookie] = useCookies(["token"]);
-  const [usercookie] = useCookies(["user"]);
   const [userFirstName, setName] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+
+  const route = useLocation().pathname.split("/").slice(1);
+  const [cookie] = useCookies(["token"]);
+  const [usercookie] = useCookies(["user"]);
+
+  const { logout } = useAuth();
 
   useEffect(async () => {
     /* eslint no-underscore-dangle: 0 */
@@ -113,6 +115,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const handleOpenMenu = (event) => {
     setOpenMenu(event.currentTarget);
   };
+
   const handleOpenProfile = (event) => {
     setOpenProfile(event.currentTarget);
   };
@@ -223,7 +226,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
         {isMini ? null : (
           <MDBox sx={(theme) => navbarRow(theme, { isMini })}>
             <MDBox pr={1}>
-              <MDInput label="Search here" />
+              <MDInput
+                label="Search here"
+                onChange={(e) => setSearchKeyword(dispatch, e.target.value)}
+              />
             </MDBox>
             <MDBox color={light ? "white" : "inherit"}>
               {/* <IconButton sx={navbarIconButton} size="small" disableRipple>

@@ -5,9 +5,9 @@ import MDTypography from "components/MDTypography";
 // Image component
 import Img from "../Img";
 // images
-import mainExpert1 from "../../../assets/images/sign up farmer1.png";
-import mainExpert2 from "../../../assets/images/sign up farmer2.png";
-import mainExpert3 from "../../../assets/images/sign in farmer2.png";
+import mainExpert1 from "../../../assets/images/docs/auth/sign up farmer1.png";
+import mainExpert2 from "../../../assets/images/docs/auth/sign up farmer2.png";
+import mainExpert3 from "../../../assets/images/docs/auth/sign in farmer2.png";
 
 function Farmer() {
   return (

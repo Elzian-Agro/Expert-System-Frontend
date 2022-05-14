@@ -6,8 +6,8 @@ import MDTypography from "components/MDTypography";
 // Image component
 import Img from "../Img";
 // images
-import Screen1 from "../../../assets/images/Create schedule 1.png";
-import Screen2 from "../../../assets/images/Create schedule 2.png";
+import Screen1 from "../../../assets/images/docs/schedules/Create schedule 1.png";
+import Screen2 from "../../../assets/images/docs/schedules/Create schedule 2.png";
 
 function CreateSchedule() {
   return (

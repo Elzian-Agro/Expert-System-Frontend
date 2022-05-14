@@ -6,8 +6,8 @@ import Typography from "@mui/material/Typography";
 // Image component
 import Img from "../Img";
 // images
-import Screen1 from "../../../assets/images/My schedule 1.png";
-import Screen2 from "../../../assets/images/My schedule 2.png";
+import Screen1 from "../../../assets/images/docs/schedules/My schedule 1.png";
+import Screen2 from "../../../assets/images/docs/schedules/My schedule 2.png";
 
 function MySchedule() {
   return (

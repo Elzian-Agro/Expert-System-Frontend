@@ -27,7 +27,7 @@ const AuthProvider = (props) => {
   }, []);
   const login = () => {
     axios
-      .post("https://elzian-agro-user-auth.herokuapp.com/auth/login", loginUser)
+      .post(`${process.env.REACT_APP_AUTH_BACKEND}/auth/login`, loginUser)
       .then((res) => {
         setloginUser({
           email: "",
@@ -60,7 +60,7 @@ const AuthProvider = (props) => {
     removeCookie("token", { path: "/" });
     removeUserCookie("user", { path: "/" });
     axios
-      .get("https://elzian-agro-user-auth.herokuapp.com/auth/logout", {
+      .get(`${process.env.REACT_APP_AUTH_BACKEND}/auth/logout`, {
         headers: { "x-auth-token": cookies.token },
       })
       .then(() => {});

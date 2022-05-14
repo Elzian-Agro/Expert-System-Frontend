@@ -4,12 +4,17 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { useMaterialUIController } from "context";
+
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import MDBox from "../MDBox";
 import ScheduleCard from "./ScheduleCard";
 
 const AllSchedule = () => {
+  const [controller] = useMaterialUIController();
+  const { searchKeyword } = controller;
+
   const [cookies] = useCookies(["token"]);
   const [schedules, setSchedules] = useState([]);
   const [cardCount, setCardCount] = useState(6);
@@ -28,6 +33,19 @@ const AllSchedule = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  // searching
+  useEffect(() => {
+    const keyword = searchKeyword.toLowerCase().trim();
+    setSchedules(
+      schedules.filter(
+        (schedule) =>
+          schedule.MeetingTitle.toLowerCase().includes(keyword) ||
+          schedule.ExpertName.toLowerCase().includes(keyword) ||
+          schedule.Description.toLowerCase().includes(keyword)
+      )
+    );
+  }, [searchKeyword]);
 
   const bookingSchedule = async (meetingID) => {
     try {
