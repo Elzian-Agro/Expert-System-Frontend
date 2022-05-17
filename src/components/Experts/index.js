@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { useMaterialUIController } from "context";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import MDBox from "../MDBox";
 import ExpertCard from "./ExpertCard";
 
 const ExpertProfile = () => {
+  const [controller] = useMaterialUIController();
+  const { searchKeyword } = controller;
   // Storing expert data
   const [cookies] = useCookies(["token"]);
   const [data, setData] = useState([]);
@@ -22,6 +25,12 @@ const ExpertProfile = () => {
       .get(`${process.env.REACT_APP_AUTH_BACKEND}/user/getExperts`)
       .then((response) => setData(response.data));
   }, []);
+
+  // filtering cards according to search keyword
+  useEffect(() => {
+    const keyword = searchKeyword.toLowerCase().trim();
+    setData(data.filter((expcard) => expcard.userFirstName.toLowerCase().includes(keyword)));
+  }, [searchKeyword]);
 
   return (
     <MDBox>
